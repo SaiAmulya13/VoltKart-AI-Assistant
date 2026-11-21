@@ -10,7 +10,6 @@ import pandas as pd
 # -----------------------------------------
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-
 TABLES_FOLDER = PROJECT_ROOT / "data" / "tables"
 
 
@@ -40,7 +39,6 @@ def load_multi_csv_tables():
     tables = {}
 
     for table_name, filename in TABLE_FILES.items():
-
         file_path = TABLES_FOLDER / filename
 
         if not file_path.exists():
@@ -50,7 +48,6 @@ def load_multi_csv_tables():
 
         try:
             df = pd.read_csv(file_path)
-
         except Exception as e:
             raise ValueError(
                 f"Could not read {filename}: {e}"
@@ -201,7 +198,7 @@ def build_multi_csv_dataset():
     )
 
     # Step 5: Aggregate return information
-    # This prevents duplicate order-item rows.
+    # Prevent duplicate order-item rows.
 
     returns_summary = (
         returns
@@ -227,25 +224,18 @@ def build_multi_csv_dataset():
 
     # Step 6: Clean numeric columns
 
-    dataset["quantity"] = pd.to_numeric(
-        dataset["quantity"],
-        errors="coerce"
-    ).fillna(0)
+    numeric_columns = [
+        "quantity",
+        "unit_price_inr",
+        "discount_pct",
+        "refund_amount_inr",
+    ]
 
-    dataset["unit_price_inr"] = pd.to_numeric(
-        dataset["unit_price_inr"],
-        errors="coerce"
-    ).fillna(0)
-
-    dataset["discount_pct"] = pd.to_numeric(
-        dataset["discount_pct"],
-        errors="coerce"
-    ).fillna(0)
-
-    dataset["refund_amount_inr"] = pd.to_numeric(
-        dataset["refund_amount_inr"],
-        errors="coerce"
-    ).fillna(0)
+    for column in numeric_columns:
+        dataset[column] = pd.to_numeric(
+            dataset[column],
+            errors="coerce"
+        ).fillna(0)
 
     dataset["return_count"] = (
         dataset["return_count"]
@@ -289,7 +279,7 @@ def answer_multi_csv_question(question):
     question_lower = question.lower()
 
     # -----------------------------------------
-    # Prepare dates for date-based analytics
+    # Prepare dates
     # -----------------------------------------
 
     dataset["order_date"] = pd.to_datetime(
@@ -306,7 +296,9 @@ def answer_multi_csv_question(question):
         question_lower
     )
 
-    # Month names and month numbers
+    # -----------------------------------------
+    # Month names
+    # -----------------------------------------
 
     month_names = {
         "january": 1,
@@ -327,7 +319,6 @@ def answer_multi_csv_question(question):
     selected_month_name = None
 
     for month_name, month_number in month_names.items():
-
         if re.search(
             rf"\b{month_name}\b",
             question_lower
@@ -335,6 +326,134 @@ def answer_multi_csv_question(question):
             selected_month = month_number
             selected_month_name = month_name.capitalize()
             break
+
+    # -----------------------------------------
+    # Order-specific lookup
+    # -----------------------------------------
+    # Example:
+    # Show me the details of order O00174.
+    # -----------------------------------------
+
+    order_match = re.search(
+        r"\bO\d{5}\b",
+        question,
+        re.IGNORECASE
+    )
+
+    if order_match:
+        order_id = order_match.group(0).upper()
+
+        order_data = dataset[
+            dataset["order_id"]
+            .astype(str)
+            .str.upper()
+            == order_id
+        ].copy()
+
+        if order_data.empty:
+            return {
+                "answer": (
+                    f"I could not find order {order_id} "
+                    "in the uploaded order data."
+                ),
+                "sources": [
+                    "orders.csv",
+                    "customers.csv",
+                    "order_items.csv",
+                    "products.csv",
+                ],
+            }
+
+        # Customer information
+
+        customer_name = (
+            order_data["full_name"].iloc[0]
+            if "full_name" in order_data.columns
+            else "Unknown customer"
+        )
+
+        customer_city = (
+            order_data["home_city"].iloc[0]
+            if "home_city" in order_data.columns
+            else "Unknown"
+        )
+
+        loyalty_tier = (
+            order_data["loyalty_tier"].iloc[0]
+            if "loyalty_tier" in order_data.columns
+            else "Unknown"
+        )
+
+        # Order information
+
+        order_date = order_data["order_date"].iloc[0]
+
+        order_status = (
+            order_data["order_status"].iloc[0]
+            if "order_status" in order_data.columns
+            else "Unknown"
+        )
+
+        store_id = (
+            order_data["store_id"].iloc[0]
+            if "store_id" in order_data.columns
+            else "Unknown"
+        )
+
+        # Product information
+
+        product_details = []
+
+        for _, row in order_data.iterrows():
+            product_name = row.get(
+                "product_name",
+                "Unknown product"
+            )
+
+            product_id = row.get(
+                "product_id",
+                "Unknown"
+            )
+
+            category = row.get(
+                "category",
+                "Unknown category"
+            )
+
+            quantity = row.get(
+                "quantity",
+                0
+            )
+
+            product_details.append(
+                f"- {product_name} "
+                f"(Product ID: {product_id}, "
+                f"Category: {category}, "
+                f"Quantity: {quantity})"
+            )
+
+        answer = (
+            f"Order ID: {order_id}\n"
+            f"Customer: {customer_name}\n"
+            f"Home city: {customer_city}\n"
+            f"Loyalty tier: {loyalty_tier}\n"
+            f"Order date: {order_date}\n"
+            f"Order status: {order_status}\n"
+            f"Store ID: {store_id}\n\n"
+            f"Products in this order:\n"
+            + "\n".join(product_details)
+        )
+
+        return {
+            "answer": answer,
+            "sources": [
+                "orders.csv",
+                "customers.csv",
+                "order_items.csv",
+                "products.csv",
+                "stores.csv",
+            ],
+        }
 
     # -----------------------------------------
     # Question 1: Revenue for a month and year
@@ -348,7 +467,6 @@ def answer_multi_csv_question(question):
             or "sales" in question_lower
         )
     ):
-
         selected_year = int(year_match.group(1))
 
         filtered_data = valid_dates[
@@ -395,14 +513,9 @@ def answer_multi_csv_question(question):
             "month-wise revenue",
         ]
     ):
-
         monthly_data = valid_dates.copy()
 
-        # If a year is mentioned,
-        # show monthly revenue for that year.
-
         if year_match:
-
             selected_year = int(
                 year_match.group(1)
             )
@@ -454,8 +567,11 @@ def answer_multi_csv_question(question):
             "revenue" in question_lower
             or "sales" in question_lower
         )
+        and "store" not in question_lower
+        and "category" not in question_lower
+        and "product" not in question_lower
+        and "city" not in question_lower
     ):
-
         selected_year = int(
             year_match.group(1)
         )
@@ -483,18 +599,42 @@ def answer_multi_csv_question(question):
         }
 
     # -----------------------------------------
-    # Question 4: Highest revenue by store
+    # Question 4: Revenue by store
     # -----------------------------------------
 
     if "store" in question_lower and (
         "revenue" in question_lower
         or "sales" in question_lower
     ):
+        store_data = dataset.copy()
+
+        # Apply year filter when provided.
+
+        if year_match:
+            selected_year = int(
+                year_match.group(1)
+            )
+
+            store_data = store_data[
+                store_data["order_date"].dt.year
+                == selected_year
+            ]
+
+        group_columns = []
+
+        if "store_name" in store_data.columns:
+            group_columns.append("store_name")
+
+        if "city" in store_data.columns:
+            group_columns.append("city")
+
+        if not group_columns:
+            group_columns = ["store_id"]
 
         result = (
-            dataset
+            store_data
             .groupby(
-                ["store_name", "city"],
+                group_columns,
                 dropna=False
             )["net_revenue_inr"]
             .sum()
@@ -528,9 +668,20 @@ def answer_multi_csv_question(question):
         "revenue" in question_lower
         or "sales" in question_lower
     ):
+        category_data = dataset.copy()
+
+        if year_match:
+            selected_year = int(
+                year_match.group(1)
+            )
+
+            category_data = category_data[
+                category_data["order_date"].dt.year
+                == selected_year
+            ]
 
         result = (
-            dataset
+            category_data
             .groupby(
                 "category",
                 dropna=False
@@ -558,6 +709,7 @@ def answer_multi_csv_question(question):
             "sources": [
                 "order_items.csv",
                 "products.csv",
+                "orders.csv",
             ],
         }
 
@@ -570,9 +722,20 @@ def answer_multi_csv_question(question):
         or "sales" in question_lower
         or "best selling" in question_lower
     ):
+        product_data = dataset.copy()
+
+        if year_match:
+            selected_year = int(
+                year_match.group(1)
+            )
+
+            product_data = product_data[
+                product_data["order_date"].dt.year
+                == selected_year
+            ]
 
         result = (
-            dataset
+            product_data
             .groupby(
                 ["product_name", "category"],
                 dropna=False
@@ -596,6 +759,7 @@ def answer_multi_csv_question(question):
             "sources": [
                 "order_items.csv",
                 "products.csv",
+                "orders.csv",
             ],
         }
 
@@ -613,7 +777,6 @@ def answer_multi_csv_question(question):
             "number of orders",
         ]
     ):
-
         result = (
             dataset
             .groupby(
@@ -647,7 +810,6 @@ def answer_multi_csv_question(question):
     # -----------------------------------------
 
     if "return" in question_lower:
-
         returned_items = dataset[
             dataset["is_returned"]
         ]["order_item_id"].nunique()
@@ -673,7 +835,6 @@ def answer_multi_csv_question(question):
         "revenue" in question_lower
         or "sales" in question_lower
     ):
-
         delivered = dataset[
             dataset["order_status"]
             .astype(str)
@@ -710,7 +871,6 @@ def answer_multi_csv_question(question):
             or "sales" in question_lower
         )
     ):
-
         result = (
             dataset
             .groupby(
@@ -745,7 +905,7 @@ def answer_multi_csv_question(question):
         }
 
     # -----------------------------------------
-    # Question 11: Average Order Value (AOV)
+    # Question 11: Average Order Value
     # -----------------------------------------
 
     if (
@@ -753,7 +913,6 @@ def answer_multi_csv_question(question):
         or "average value of orders" in question_lower
         or "aov" in question_lower
     ):
-
         total_revenue = dataset[
             "net_revenue_inr"
         ].sum()
@@ -795,7 +954,8 @@ def answer_multi_csv_question(question):
             "the most orders, returned items, "
             "delivered-order revenue, revenue by city, "
             "average order value, revenue by year, "
-            "revenue by month, or monthly revenue."
+            "revenue by month, monthly revenue, "
+            "or details of a specific order ID."
         ),
         "sources": [],
     }
@@ -808,7 +968,16 @@ def answer_multi_csv_question(question):
 def is_multi_csv_question(question):
     question_lower = question.lower()
 
-    # 1. Store revenue or sales
+    # 1. Specific order ID lookup
+
+    if re.search(
+        r"\bO\d{5}\b",
+        question,
+        re.IGNORECASE
+    ):
+        return True
+
+    # 2. Store revenue or sales
 
     if "store" in question_lower and (
         "revenue" in question_lower
@@ -816,7 +985,7 @@ def is_multi_csv_question(question):
     ):
         return True
 
-    # 2. Category revenue or sales
+    # 3. Category revenue or sales
 
     if "category" in question_lower and (
         "revenue" in question_lower
@@ -824,7 +993,7 @@ def is_multi_csv_question(question):
     ):
         return True
 
-    # 3. Product revenue or sales
+    # 4. Product revenue or sales
 
     if "product" in question_lower and (
         "revenue" in question_lower
@@ -833,7 +1002,7 @@ def is_multi_csv_question(question):
     ):
         return True
 
-    # 4. Customer order questions
+    # 5. Customer order questions
 
     if "customer" in question_lower and any(
         phrase in question_lower
@@ -847,7 +1016,7 @@ def is_multi_csv_question(question):
     ):
         return True
 
-    # 5. Return questions
+    # 6. Return questions
 
     if "return" in question_lower and any(
         phrase in question_lower
@@ -861,7 +1030,7 @@ def is_multi_csv_question(question):
     ):
         return True
 
-    # 6. Delivered order revenue
+    # 7. Delivered order revenue
 
     if "delivered" in question_lower and (
         "revenue" in question_lower
@@ -869,7 +1038,7 @@ def is_multi_csv_question(question):
     ):
         return True
 
-    # 7. Revenue by city
+    # 8. Revenue by city
 
     if "city" in question_lower and (
         "revenue" in question_lower
@@ -877,7 +1046,7 @@ def is_multi_csv_question(question):
     ):
         return True
 
-    # 8. Average Order Value
+    # 9. Average Order Value
 
     if (
         "average order value" in question_lower
@@ -886,7 +1055,7 @@ def is_multi_csv_question(question):
     ):
         return True
 
-    # 9. Date-based revenue questions
+    # 10. Date-based revenue questions
 
     if (
         "revenue" in question_lower

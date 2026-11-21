@@ -1,5 +1,5 @@
-
 import json
+import re
 import numpy as np
 import faiss
 
@@ -65,6 +65,9 @@ def build_vector_store(chunks, embeddings):
         embeddings,
         dtype="float32"
     )
+
+    # Ensure embeddings are normalized.
+    faiss.normalize_L2(embeddings)
 
     dimension = embeddings.shape[1]
 
@@ -146,7 +149,9 @@ def add_chunks_to_vector_store(
         dtype="float32"
     )
 
-    # Check whether vector store already exists
+    # Normalize embeddings for cosine similarity.
+    faiss.normalize_L2(embeddings)
+
     if INDEX_PATH.exists() and METADATA_PATH.exists():
 
         index, existing_chunks = load_vector_store()
@@ -167,7 +172,6 @@ def add_chunks_to_vector_store(
             "FAISS index and metadata files are inconsistent."
         )
 
-    # Prevent duplicate chunks
     existing_ids = {
         chunk["chunk_id"]
         for chunk in existing_chunks
@@ -209,7 +213,6 @@ def add_chunks_to_vector_store(
             "Embedding dimension does not match FAISS index."
         )
 
-    # Add new vectors without deleting existing ones
     index.add(
         embeddings_to_add
     )
@@ -244,25 +247,6 @@ def detect_document_family(question):
     question = question.lower()
 
     if any(word in question for word in [
-        "return",
-        "refund",
-        "restocking",
-        "gold member",
-        "platinum member",
-        "silver member"
-    ]):
-
-        return "Return & Refund Policy"
-
-    elif any(word in question for word in [
-        "warranty",
-        "voltcare",
-        "warranty claim"
-    ]):
-
-        return "VoltCare Warranty Terms"
-
-    elif any(word in question for word in [
         "machine learning engineer",
         "job description",
         "salary",
@@ -280,6 +264,25 @@ def detect_document_family(question):
     ]):
 
         return "Store Operations Notice"
+
+    elif any(word in question for word in [
+        "voltcare",
+        "warranty",
+        "warranty claim"
+    ]):
+
+        return "VoltCare Warranty Terms"
+
+    elif any(word in question for word in [
+        "return",
+        "refund",
+        "restocking",
+        "gold member",
+        "platinum member",
+        "silver member"
+    ]):
+
+        return "Return & Refund Policy"
 
     return None
 
@@ -326,12 +329,10 @@ def select_latest_versions(chunks):
             "document_date"
         )
 
-        # Keep undated documents searchable
         if not document_date:
 
             latest_chunks.append(chunk)
 
-        # Keep only the latest dated version per family
         elif latest_dates.get(family) == document_date:
 
             latest_chunks.append(chunk)
@@ -340,7 +341,118 @@ def select_latest_versions(chunks):
 
 
 # --------------------------------
-# 8. Search documents
+# 8. Text normalization
+# --------------------------------
+
+def normalize_text(text):
+
+    text = text.lower()
+
+    text = re.sub(
+        r"\s+",
+        " ",
+        text
+    )
+
+    text = re.sub(
+        r"[^\w\s]",
+        "",
+        text
+    )
+
+    return text.strip()
+
+
+# --------------------------------
+# 9. Extract useful keywords
+# --------------------------------
+
+def extract_keywords(text):
+
+    words = re.findall(
+        r"[a-zA-Z0-9]+",
+        text.lower()
+    )
+
+    stop_words = {
+        "a", "an", "the", "is", "are",
+        "was", "were", "do", "does",
+        "did", "how", "what", "when",
+        "where", "who", "which", "why",
+        "can", "could", "would", "should",
+        "must", "may", "will", "to",
+        "of", "for", "from", "in", "on",
+        "at", "by", "with", "and", "or",
+        "customer", "customers", "product",
+        "products", "please", "tell", "me",
+        "about", "their", "they", "this",
+        "that", "within"
+    }
+
+    keywords = [
+        word
+        for word in words
+        if word not in stop_words
+        and len(word) > 1
+    ]
+
+    return keywords
+
+
+# --------------------------------
+# 10. Calculate keyword relevance
+# --------------------------------
+
+def calculate_keyword_score(
+    question,
+    document_text
+):
+
+    question_keywords = set(
+        extract_keywords(question)
+    )
+
+    document_keywords = set(
+        extract_keywords(document_text)
+    )
+
+    if not question_keywords:
+        return 0.0
+
+    matching_keywords = (
+        question_keywords
+        & document_keywords
+    )
+
+    keyword_score = (
+        len(matching_keywords)
+        / len(question_keywords)
+    )
+
+    # Give a small boost for exact phrase matches.
+    normalized_question = normalize_text(question)
+
+    normalized_document = normalize_text(
+        document_text
+    )
+
+    phrase_boost = 0.0
+
+    if (
+        normalized_question
+        and normalized_question in normalized_document
+    ):
+
+        phrase_boost = 0.15
+
+    return min(
+        keyword_score + phrase_boost,
+        1.0
+    )
+
+
+# --------------------------------
+# 11. Search documents
 # --------------------------------
 
 def search_documents(
@@ -353,25 +465,27 @@ def search_documents(
     question = question.strip()
 
     if not question:
+
         raise ValueError(
             "Question cannot be empty."
         )
 
     if top_k < 1:
+
         raise ValueError(
             "top_k must be at least 1."
         )
 
-    # Load FAISS index and metadata
+    # Load FAISS index and metadata.
     index, chunks = load_vector_store()
 
     if index.ntotal == 0:
         return []
 
-    # Load embedding model only when document search is requested
+    # Load embedding model only when searching.
     from backend.services.embedding_service import model
 
-    # Generate question embedding
+    # Generate question embedding.
     query_embedding = model.encode(
         [question],
         normalize_embeddings=True
@@ -382,14 +496,13 @@ def search_documents(
         dtype="float32"
     )
 
-    # Search directly with FAISS
-    # This avoids reconstructing the entire vector matrix
+    # Search all vectors so relevant older
+    # document versions are not automatically lost.
     distances, matched_indices = index.search(
         query_embedding,
         index.ntotal
     )
 
-    # Store similarity scores by vector index
     score_by_index = {
         int(index_id): float(score)
         for index_id, score in zip(
@@ -399,64 +512,104 @@ def search_documents(
         if index_id >= 0
     }
 
-    if document_family is None:
-
-        document_family = detect_document_family(
-            question
-        )
-
+    # Only filter by family when explicitly requested.
+    # Do not automatically restrict questions to one
+    # family based on words such as "return" or "refund".
     candidate_indices = list(
         range(len(chunks))
     )
 
-    # Filter by document family
     if document_family:
 
         candidate_indices = [
-            i for i in candidate_indices
+            i
+            for i in candidate_indices
             if chunks[i].get("document_family")
             == document_family
         ]
 
-    # Filter by latest document version
-    if latest_only:
+    # Keep all versions searchable.
+    # latest_only is retained for compatibility with
+    # existing calls from retrieval_service.py.
+    #
+    # Some assessment facts may exist only in an older
+    # version, so we do not discard older chunks here.
 
-        candidate_chunks = [
-            chunks[i]
-            for i in candidate_indices
-        ]
+    ranked_results = []
 
-        latest_chunks = select_latest_versions(
-            candidate_chunks
+    for i in candidate_indices:
+
+        chunk = chunks[i]
+
+        text = chunk.get(
+            "text",
+            ""
         )
 
-        latest_ids = {
-            chunk["chunk_id"]
-            for chunk in latest_chunks
-        }
+        if not text.strip():
+            continue
 
-        candidate_indices = [
-            i for i in candidate_indices
-            if chunks[i]["chunk_id"] in latest_ids
-        ]
-
-    # Sort by similarity score
-    candidate_indices.sort(
-        key=lambda i: score_by_index.get(
+        semantic_score = score_by_index.get(
             i,
-            float("-inf")
-        ),
+            0.0
+        )
+
+        keyword_score = calculate_keyword_score(
+            question,
+            text
+        )
+
+        # Combine semantic and keyword relevance.
+        final_score = (
+            semantic_score * 0.70
+            + keyword_score * 0.30
+        )
+
+        result = chunk.copy()
+
+        result["similarity_score"] = semantic_score
+
+        result["keyword_score"] = keyword_score
+
+        result["final_score"] = final_score
+
+        ranked_results.append(
+            result
+        )
+
+    # Sort by combined relevance.
+    ranked_results.sort(
+        key=lambda result: result["final_score"],
         reverse=True
     )
 
-    results = []
+    # --------------------------------
+    # Remove duplicate text passages
+    # --------------------------------
 
-    for i in candidate_indices[:top_k]:
+    unique_results = []
 
-        result = chunks[i].copy()
+    seen_text = set()
 
-        result["similarity_score"] = score_by_index[i]
+    for result in ranked_results:
 
-        results.append(result)
+        normalized = normalize_text(
+            result.get("text", "")
+        )
 
-    return results
+        if not normalized:
+            continue
+
+        if normalized in seen_text:
+            continue
+
+        seen_text.add(normalized)
+
+        unique_results.append(
+            result
+        )
+
+        if len(unique_results) >= top_k:
+            break
+
+    return unique_results

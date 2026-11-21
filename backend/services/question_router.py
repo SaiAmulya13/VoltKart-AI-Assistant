@@ -3,7 +3,6 @@
 # Question Router
 # ==========================================
 
-
 def identify_question_type(question):
 
     question = question.lower().strip()
@@ -13,25 +12,78 @@ def identify_question_type(question):
     # --------------------------------------
 
     rag_keywords = [
-        "policy",
+
+        # Return and refund policy
         "return period",
         "return window",
         "return policy",
+        "returnable",
+        "return within",
         "refund timeline",
         "refund processing",
+        "refund takes",
+        "refund take",
+        "refund time",
+        "restocking fee",
+        "return fee",
+        "exchange",
+        "gold members",
+        "platinum members",
+
+        # Damaged or defective products
+        "damaged on delivery",
+        "damage on delivery",
+        "damaged product",
+        "product damaged",
+        "report damage",
+        "report a damage",
+        "report a damaged",
+        "defective product",
+        "defective item",
+        "opened earbuds",
+        "opened earbud",
+        "earbuds returnable",
+        "earbud returnable",
+
+        # Warranty
         "warranty",
         "voltcare",
+        "warranty claim",
+        "number of claims",
+        "claim limit",
+
+        # Job description
         "job description",
-        "salary",
         "machine learning engineer",
-        "restocking fee",
-        "exchange",
+        "salary range",
+        "work mode",
+        "job location",
+        "reports to",
+        "reporting manager",
+
+        # Document and notice questions
         "business days",
         "working days",
-        "store operations",
-        "notice",
-        "document",
-        "terms and conditions"
+        "store operations notice",
+        "operations notice",
+        "store notice",
+        "terms and conditions",
+
+        # Common document question wording
+        "how soon must",
+        "how soon should",
+        "how long does",
+        "how long will",
+        "how many days does",
+        "how many business days",
+        "is it allowed",
+        "is it eligible",
+        "are opened",
+        "can i return",
+        "can this be returned",
+        "according to the policy",
+        "according to the document",
+        "according to the notice",
     ]
 
     if any(keyword in question for keyword in rag_keywords):
@@ -42,6 +94,7 @@ def identify_question_type(question):
     # --------------------------------------
 
     uploaded_csv_keywords = [
+
         "uploaded csv",
         "uploaded file",
         "uploaded dataset",
@@ -56,17 +109,40 @@ def identify_question_type(question):
         "in this csv",
         "in this file",
         "csv file",
-        "csv data"
+        "csv data",
     ]
 
     if any(keyword in question for keyword in uploaded_csv_keywords):
         return "uploaded_csv"
 
     # --------------------------------------
-    # 3. Multi-file analysis questions
+    # 3. Questions requiring both CSV and
+    #    document information
+    # --------------------------------------
+
+    combined_keywords = [
+
+        "does the order data agree",
+        "does the data agree",
+        "according to the order data",
+        "according to the store notice",
+        "store was closed",
+        "closed in december",
+        "within the window",
+        "if it were within",
+        "would a restocking fee",
+        "is that allowed",
+    ]
+
+    if any(keyword in question for keyword in combined_keywords):
+        return "hybrid"
+
+    # --------------------------------------
+    # 4. Multi-file analysis questions
     # --------------------------------------
 
     multi_file_keywords = [
+
         "which customers purchased",
         "which customer purchased",
         "customers purchased",
@@ -86,17 +162,33 @@ def identify_question_type(question):
         "quantity of products sold",
         "customer and order",
         "customers and orders",
-        "orders and order items"
+        "orders and order items",
+        "top 3 customers",
+        "top three customers",
+        "customers by spend",
+        "customers by spending",
+        "customer spend",
+        "customer spending",
+        "customers whose home city",
+        "home city is bengaluru",
+        "bought a laptop",
+        "most common return reason",
+        "returned most often",
+        "refund amount by region",
+        "total refund amount by region",
+        "revenue by product category",
+        "units sold per month",
     ]
 
     if any(keyword in question for keyword in multi_file_keywords):
-        return "uploaded_csv"
+        return "csv"
 
     # --------------------------------------
-    # 4. General uploaded CSV analysis
+    # 5. General CSV analysis questions
     # --------------------------------------
 
     analysis_keywords = [
+
         "average",
         "mean",
         "total",
@@ -125,17 +217,18 @@ def identify_question_type(question):
         "sort",
         "describe",
         "summary",
-        "distribution"
+        "distribution",
     ]
 
     if any(keyword in question for keyword in analysis_keywords):
         return "uploaded_csv"
 
     # --------------------------------------
-    # 5. Predefined VoltKart business questions
+    # 6. Predefined VoltKart business questions
     # --------------------------------------
 
     csv_keywords = [
+
         "revenue",
         "sales",
         "store",
@@ -147,21 +240,29 @@ def identify_question_type(question):
         "orders",
         "purchased",
         "purchase",
-        "top customer",
         "highest revenue",
         "most returned product",
         "refunds by region",
+        "refund amount",
         "payment method",
         "quantity",
         "delivered",
-        "cancelled"
+        "cancelled",
+        "return reason",
+        "return status",
+        "store manager",
+        "store closure",
+        "store closed",
+        "bengaluru",
+        "platinum customer",
+        "laptop",
     ]
 
     if any(keyword in question for keyword in csv_keywords):
         return "csv"
 
     # --------------------------------------
-    # 6. Unknown question
+    # 7. Unknown question
     # --------------------------------------
 
     return "unknown"

@@ -26,17 +26,17 @@ from backend.services.multi_csv_service import (
 )
 
 
-# ---------------------------------------
-# Get current UTC time
-# ---------------------------------------
+# ==========================================
+# 1. Get current UTC time
+# ==========================================
 
 def current_time():
     return datetime.now(timezone.utc).isoformat()
 
 
-# ---------------------------------------
-# 1. Create a new chat
-# ---------------------------------------
+# ==========================================
+# 2. Create a new chat
+# ==========================================
 
 def create_chat(title="New Chat"):
 
@@ -68,9 +68,9 @@ def create_chat(title="New Chat"):
     return chat_id
 
 
-# ---------------------------------------
-# 2. Update chat title
-# ---------------------------------------
+# ==========================================
+# 3. Update chat title
+# ==========================================
 
 def update_chat_title(chat_id, first_question):
 
@@ -105,9 +105,9 @@ def update_chat_title(chat_id, first_question):
     return title
 
 
-# ---------------------------------------
-# 3. Save a message
-# ---------------------------------------
+# ==========================================
+# 4. Save a message
+# ==========================================
 
 def save_message(
     chat_id,
@@ -157,9 +157,9 @@ def save_message(
     return message_id
 
 
-# ---------------------------------------
-# 4. Get messages for a chat
-# ---------------------------------------
+# ==========================================
+# 5. Get messages for a chat
+# ==========================================
 
 def get_chat_messages(chat_id):
 
@@ -199,9 +199,9 @@ def get_chat_messages(chat_id):
     return result
 
 
-# ---------------------------------------
-# 5. Get all chats
-# ---------------------------------------
+# ==========================================
+# 6. Get all chats
+# ==========================================
 
 def get_all_chats():
 
@@ -225,9 +225,9 @@ def get_all_chats():
     ]
 
 
-# ---------------------------------------
-# 6. Delete empty conversations
-# ---------------------------------------
+# ==========================================
+# 7. Delete empty conversations
+# ==========================================
 
 def delete_empty_chats():
 
@@ -255,57 +255,102 @@ def delete_empty_chats():
     return deleted_count
 
 
-# ---------------------------------------
-# 7. Identify Multi-CSV questions
-# ---------------------------------------
+# ==========================================
+# 8. Detect hybrid questions
+# ==========================================
+
+def is_hybrid_question(question):
+
+    question_lower = question.lower()
+
+    hybrid_keywords = [
+
+        # Order eligibility + policy
+        "is that allowed",
+        "is it allowed",
+        "would a restocking fee",
+        "if it were within the window",
+        "within the return window",
+        "within the window",
+
+        # Notice + order data
+        "does the order data agree",
+        "does the data agree",
+        "store was closed",
+        "closed in december",
+        "according to the store notice",
+
+        # Questions requiring policy and order details
+        "order and policy",
+        "order eligibility",
+        "eligible for return",
+    ]
+
+    return any(
+        keyword in question_lower
+        for keyword in hybrid_keywords
+    )
+
+
+# ==========================================
+# 9. Identify Multi-CSV questions
+# ==========================================
 
 def is_multi_csv_question(question):
 
     question_lower = question.lower()
 
-    # -----------------------------------------
-    # 1. Store revenue or sales questions
-    # -----------------------------------------
+    # Store revenue and store ranking
 
     if (
         "store" in question_lower
-        and (
-            "revenue" in question_lower
-            or "sales" in question_lower
+        and any(
+            word in question_lower
+            for word in [
+                "revenue",
+                "sales",
+                "highest",
+                "top",
+                "rank",
+                "manager",
+            ]
         )
     ):
         return True
 
-    # -----------------------------------------
-    # 2. Product category revenue or sales
-    # -----------------------------------------
+    # Category revenue
 
     if (
         "category" in question_lower
-        and (
-            "revenue" in question_lower
-            or "sales" in question_lower
+        and any(
+            word in question_lower
+            for word in [
+                "revenue",
+                "sales",
+                "units",
+            ]
         )
     ):
         return True
 
-    # -----------------------------------------
-    # 3. Product revenue or sales questions
-    # -----------------------------------------
+    # Product revenue or sales
 
     if (
         "product" in question_lower
-        and (
-            "revenue" in question_lower
-            or "sales" in question_lower
-            or "best selling" in question_lower
+        and any(
+            word in question_lower
+            for word in [
+                "revenue",
+                "sales",
+                "best selling",
+                "returned",
+                "return reason",
+            ]
         )
     ):
         return True
 
-    # -----------------------------------------
-    # 4. Customer order-count questions
-    # -----------------------------------------
+    # Customer spending and orders
 
     if (
         "customer" in question_lower
@@ -317,14 +362,39 @@ def is_multi_csv_question(question):
                 "top orders",
                 "placed the most",
                 "number of orders",
+                "top 3",
+                "top three",
+                "by spend",
+                "by spending",
+                "spend at",
+                "spending at",
+                "bought a laptop",
+                "home city",
+                "platinum",
             ]
         )
     ):
         return True
 
-    # -----------------------------------------
-    # 5. Return questions
-    # -----------------------------------------
+    # Return and refund analysis
+
+    if any(
+        phrase in question_lower
+        for phrase in [
+            "most returned",
+            "returned most often",
+            "most common return reason",
+            "refund amount by region",
+            "total refund amount by region",
+            "refunds by region",
+            "return count",
+            "return quantity",
+            "number of returns",
+        ]
+    ):
+        return True
+
+    # General return analysis
 
     if (
         "return" in question_lower
@@ -336,51 +406,68 @@ def is_multi_csv_question(question):
                 "refund",
                 "count",
                 "revenue",
+                "most common",
             ]
         )
     ):
         return True
 
-    # -----------------------------------------
-    # 6. Delivered-order revenue
-    # -----------------------------------------
+    # Delivered-order revenue
 
     if (
         "delivered" in question_lower
-        and (
-            "revenue" in question_lower
-            or "sales" in question_lower
+        and any(
+            word in question_lower
+            for word in [
+                "revenue",
+                "sales",
+            ]
         )
     ):
         return True
 
-    # -----------------------------------------
-    # 7. Revenue or sales by city
-    # -----------------------------------------
+    # Revenue or sales by city
 
     if (
         "city" in question_lower
-        and (
-            "revenue" in question_lower
-            or "sales" in question_lower
+        and any(
+            word in question_lower
+            for word in [
+                "revenue",
+                "sales",
+            ]
         )
     ):
         return True
 
-    # -----------------------------------------
-    # 8. Average Order Value (AOV)
-    # -----------------------------------------
+    # Average Order Value
 
-    if (
-        "average order value" in question_lower
-        or "average value of orders" in question_lower
-        or "aov" in question_lower
+    if any(
+        phrase in question_lower
+        for phrase in [
+            "average order value",
+            "average value of orders",
+            "aov",
+        ]
     ):
         return True
 
-    # -----------------------------------------
-    # 9. Date-based revenue questions
-    # -----------------------------------------
+    # Units sold by month
+
+    if (
+        "units sold" in question_lower
+        and any(
+            word in question_lower
+            for word in [
+                "month",
+                "monthly",
+                "per month",
+            ]
+        )
+    ):
+        return True
+
+    # Date-based revenue questions
 
     has_revenue_or_sales = (
         "revenue" in question_lower
@@ -388,8 +475,6 @@ def is_multi_csv_question(question):
     )
 
     if has_revenue_or_sales:
-
-        # Month names
 
         month_names = [
             "january",
@@ -412,8 +497,6 @@ def is_multi_csv_question(question):
         ):
             return True
 
-        # Monthly revenue questions
-
         if any(
             phrase in question_lower
             for phrase in [
@@ -425,24 +508,18 @@ def is_multi_csv_question(question):
         ):
             return True
 
-        # Questions containing a year
-
         if any(
             str(year) in question_lower
             for year in range(2000, 2101)
         ):
             return True
 
-    # -----------------------------------------
-    # Unsupported multi-CSV question
-    # -----------------------------------------
-
     return False
 
 
-# ---------------------------------------
-# 8. Generate response using CSV or RAG
-# ---------------------------------------
+# ==========================================
+# 10. Generate response using CSV or RAG
+# ==========================================
 
 def generate_chat_response(
     question,
@@ -451,13 +528,13 @@ def generate_chat_response(
 
     question_lower = question.lower()
 
-    # Identify question type
-
     question_type = identify_question_type(
         question
     )
 
+    # --------------------------------------
     # Detect explicit uploaded CSV questions
+    # --------------------------------------
 
     is_explicit_uploaded_csv = (
         ".csv" in question_lower
@@ -468,9 +545,9 @@ def generate_chat_response(
         or "columns available" in question_lower
     )
 
-    # ---------------------------------------
+    # --------------------------------------
     # 1. Explicit uploaded CSV questions
-    # ---------------------------------------
+    # --------------------------------------
 
     if is_explicit_uploaded_csv:
 
@@ -499,11 +576,119 @@ def generate_chat_response(
                 "engine": "uploaded_csv"
             }
 
-    # ---------------------------------------
-    # 2. Multi-CSV questions
-    # IMPORTANT: This must come before the
-    # generic CSV routes.
-    # ---------------------------------------
+    # --------------------------------------
+    # 2. Hybrid questions
+    # Business data + company documents
+    # --------------------------------------
+
+    if (
+        question_type == "hybrid"
+        or is_hybrid_question(question)
+    ):
+
+        try:
+            # IMPORTANT:
+            # Use the multi-CSV service here.
+            # This supports specific order IDs.
+
+            csv_result = answer_multi_csv_question(
+                question
+            )
+
+            # Retrieve company policy/document answer
+
+            rag_result = generate_rag_answer(
+                question
+            )
+
+            csv_answer = csv_result.get(
+                "answer",
+                ""
+            )
+
+            rag_answer = rag_result.get(
+                "answer",
+                ""
+            )
+
+            combined_answer = (
+                "**Business data / order information:**\n\n"
+                + str(csv_answer)
+                + "\n\n"
+                "**Company document / policy information:**\n\n"
+                + str(rag_answer)
+            )
+
+            # Multi-CSV service returns "sources"
+            # while RAG returns "citations".
+
+            csv_citations = csv_result.get(
+                "citations",
+                csv_result.get(
+                    "sources",
+                    []
+                )
+            )
+
+            rag_citations = rag_result.get(
+                "citations",
+                []
+            )
+
+            # Ensure citations are lists
+
+            if not isinstance(csv_citations, list):
+                csv_citations = [csv_citations]
+
+            if not isinstance(rag_citations, list):
+                rag_citations = [rag_citations]
+
+            combined_citations = (
+                csv_citations + rag_citations
+            )
+
+            # Remove duplicate citations
+
+            unique_citations = []
+            seen = set()
+
+            for citation in combined_citations:
+
+                citation_key = json.dumps(
+                    citation,
+                    sort_keys=True,
+                    default=str
+                )
+
+                if citation_key not in seen:
+                    seen.add(citation_key)
+                    unique_citations.append(citation)
+
+            return {
+                "answer": combined_answer,
+                "citations": unique_citations,
+                "engine": "hybrid"
+            }
+
+        except (
+            FileNotFoundError,
+            ValueError,
+            KeyError
+        ) as error:
+
+            return {
+                "answer": (
+                    "I could not complete the combined "
+                    "business-data and document lookup.\n\n"
+                    + str(error)
+                ),
+                "citations": [],
+                "engine": "hybrid"
+            }
+
+    # --------------------------------------
+    # 3. Multi-CSV questions
+    # --------------------------------------
 
     if is_multi_csv_question(question):
 
@@ -516,7 +701,10 @@ def generate_chat_response(
                 "answer": result["answer"],
                 "citations": result.get(
                     "sources",
-                    []
+                    result.get(
+                        "citations",
+                        []
+                    )
                 ),
                 "engine": "multi_csv"
             }
@@ -533,9 +721,9 @@ def generate_chat_response(
                 "engine": "multi_csv"
             }
 
-    # ---------------------------------------
-    # 3. Other uploaded CSV questions
-    # ---------------------------------------
+    # --------------------------------------
+    # 4. Other uploaded CSV questions
+    # --------------------------------------
 
     if question_type == "uploaded_csv":
 
@@ -564,9 +752,9 @@ def generate_chat_response(
                 "engine": "uploaded_csv"
             }
 
-    # ---------------------------------------
-    # 4. Predefined business CSV questions
-    # ---------------------------------------
+    # --------------------------------------
+    # 5. Predefined business CSV questions
+    # --------------------------------------
 
     if question_type == "csv":
 
@@ -584,9 +772,9 @@ def generate_chat_response(
             "engine": "csv"
         }
 
-    # ---------------------------------------
-    # 5. Document RAG questions
-    # ---------------------------------------
+    # --------------------------------------
+    # 6. Document RAG questions
+    # --------------------------------------
 
     if question_type == "rag":
 
@@ -603,9 +791,9 @@ def generate_chat_response(
             "engine": "rag"
         }
 
-    # ---------------------------------------
-    # 6. Unsupported questions
-    # ---------------------------------------
+    # --------------------------------------
+    # 7. Unknown questions
+    # --------------------------------------
 
     return {
         "answer": (
@@ -614,16 +802,16 @@ def generate_chat_response(
             "company documents.\n\n"
             "Try asking about sales, customers, products, "
             "orders, returns, policies, warranty information "
-            "or the data in your uploaded CSV."
+            "or uploaded CSV data."
         ),
         "citations": [],
         "engine": "unknown"
     }
 
 
-# ---------------------------------------
-# 9. Rename an existing chat
-# ---------------------------------------
+# ==========================================
+# 11. Rename an existing chat
+# ==========================================
 
 def rename_chat(chat_id, new_title):
 
