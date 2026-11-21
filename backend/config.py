@@ -50,11 +50,21 @@ GROQ_MODEL = os.getenv(
 )
 
 
+# Tavily Web Search API configuration
+TAVILY_API_KEY = os.getenv("TAVILY_API_KEY", "")
+
+
 # Validate configuration
 def validate_config():
 
     if not GROQ_API_KEY:
         print("WARNING: Groq API key is missing.")
+
+    if not TAVILY_API_KEY:
+        print(
+            "WARNING: Tavily API key is missing. "
+            "Web Search will not work."
+        )
 
     TABLE_UPLOAD_DIR.mkdir(
         parents=True,
@@ -76,4 +86,12 @@ def print_config():
 
     print("Groq model:", GROQ_MODEL)
 
-    print("Groq API key configured:", bool(GROQ_API_KEY))
+    print(
+        "Groq API key configured:",
+        bool(GROQ_API_KEY)
+    )
+
+    print(
+        "Tavily API key configured:",
+        bool(TAVILY_API_KEY)
+    )

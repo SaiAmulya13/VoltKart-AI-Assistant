@@ -14,9 +14,9 @@ from backend.services.chat_service import (
 )
 
 
-# ---------------------------------------
-# Router Configuration
-# ---------------------------------------
+# ============================================================
+# ROUTER CONFIGURATION
+# ============================================================
 
 router = APIRouter(
     prefix="/chat",
@@ -24,22 +24,25 @@ router = APIRouter(
 )
 
 
-# ---------------------------------------
-# Request Models
-# ---------------------------------------
+# ============================================================
+# REQUEST MODELS
+# ============================================================
 
 class ChatRequest(BaseModel):
     chat_id: str
     message: str
+
+    # Web Search setting from Streamlit
+    web_search: bool = False
 
 
 class RenameChatRequest(BaseModel):
     title: str
 
 
-# ---------------------------------------
-# 1. Create a New Chat
-# ---------------------------------------
+# ============================================================
+# 1. CREATE A NEW CHAT
+# ============================================================
 
 @router.post("/new")
 def new_chat():
@@ -62,9 +65,9 @@ def new_chat():
         )
 
 
-# ---------------------------------------
-# 2. Send Message and Generate Answer
-# ---------------------------------------
+# ============================================================
+# 2. SEND MESSAGE AND GENERATE ANSWER
+# ============================================================
 
 @router.post("/")
 def chat(request: ChatRequest):
@@ -74,7 +77,12 @@ def chat(request: ChatRequest):
         chat_id = request.chat_id
         message = request.message.strip()
 
-        # Validate message
+        web_search = request.web_search
+
+        # ----------------------------------------------------
+        # VALIDATE MESSAGE
+        # ----------------------------------------------------
+
         if not message:
 
             raise HTTPException(
@@ -82,10 +90,16 @@ def chat(request: ChatRequest):
                 detail="Message cannot be empty."
             )
 
-        # Get previous conversation history
+        # ----------------------------------------------------
+        # GET PREVIOUS CONVERSATION HISTORY
+        # ----------------------------------------------------
+
         history = get_chat_messages(chat_id)
 
-        # Generate a unique title from the first question
+        # ----------------------------------------------------
+        # GENERATE CHAT TITLE FROM FIRST QUESTION
+        # ----------------------------------------------------
+
         if len(history) == 0:
 
             update_chat_title(
@@ -93,38 +107,58 @@ def chat(request: ChatRequest):
                 message
             )
 
-        # Save user's question
+        # ----------------------------------------------------
+        # SAVE USER MESSAGE
+        # ----------------------------------------------------
+
         save_message(
             chat_id,
             "user",
             message
         )
 
-        # Generate response using CSV or RAG
+        # ----------------------------------------------------
+        # GENERATE RESPONSE
+        # ----------------------------------------------------
+        print("WEB SEARCH RECEIVED BY BACKEND:", request.web_search)
         result = generate_chat_response(
             message,
-            chat_history=history
+            chat_history=history,
+            web_search=web_search
         )
+        print("CHAT ENGINE USED:", result.get("engine"))
 
-        # Extract answer
+        # ----------------------------------------------------
+        # EXTRACT ANSWER
+        # ----------------------------------------------------
+
         answer = result.get(
             "answer",
             "Sorry, I could not generate an answer."
         )
 
-        # Extract citations
+        # ----------------------------------------------------
+        # EXTRACT CITATIONS
+        # ----------------------------------------------------
+
         citations = result.get(
             "citations",
             []
         )
 
-        # Extract selected engine
+        # ----------------------------------------------------
+        # EXTRACT ANSWERING ENGINE
+        # ----------------------------------------------------
+
         engine = result.get(
             "engine",
             "unknown"
         )
 
-        # Save assistant's response
+        # ----------------------------------------------------
+        # SAVE ASSISTANT RESPONSE
+        # ----------------------------------------------------
+
         save_message(
             chat_id,
             "assistant",
@@ -132,15 +166,21 @@ def chat(request: ChatRequest):
             citations
         )
 
+        # ----------------------------------------------------
+        # RETURN RESPONSE
+        # ----------------------------------------------------
+
         return {
             "success": True,
             "chat_id": chat_id,
             "answer": answer,
             "citations": citations,
-            "engine": engine
+            "engine": engine,
+            "web_search": web_search
         }
 
     except HTTPException:
+
         raise
 
     except Exception as e:
@@ -151,9 +191,9 @@ def chat(request: ChatRequest):
         )
 
 
-# ---------------------------------------
-# 3. Get Conversation History
-# ---------------------------------------
+# ============================================================
+# 3. GET CONVERSATION HISTORY
+# ============================================================
 
 @router.get("/history/{chat_id}")
 def chat_history(chat_id: str):
@@ -176,9 +216,9 @@ def chat_history(chat_id: str):
         )
 
 
-# ---------------------------------------
-# 4. Get All Chats
-# ---------------------------------------
+# ============================================================
+# 4. GET ALL CHATS
+# ============================================================
 
 @router.get("/list")
 def list_chats():
@@ -200,9 +240,9 @@ def list_chats():
         )
 
 
-# ---------------------------------------
-# 5. Delete Empty Conversations
-# ---------------------------------------
+# ============================================================
+# 5. DELETE EMPTY CONVERSATIONS
+# ============================================================
 
 @router.delete("/empty")
 def remove_empty_chats():
@@ -225,9 +265,9 @@ def remove_empty_chats():
         )
 
 
-# ---------------------------------------
-# 6. Rename an Existing Conversation
-# ---------------------------------------
+# ============================================================
+# 6. RENAME AN EXISTING CONVERSATION
+# ============================================================
 
 @router.patch("/rename/{chat_id}")
 def rename_existing_chat(

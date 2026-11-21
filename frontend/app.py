@@ -425,6 +425,10 @@ if "messages" not in st.session_state:
 
 if "chat_loaded" not in st.session_state:
     st.session_state.chat_loaded = False
+# Web Search setting
+if "web_search_enabled" not in st.session_state:
+    st.session_state.web_search_enabled = False
+
 
 
 # ============================================================
@@ -527,43 +531,69 @@ with st.sidebar:
                 )
 
     st.caption(
-        "Upload business data or documents "
-        "for your assistant."
+    "Upload business data or documents "
+    "for your assistant."
+)
+
+st.divider()
+
+# --------------------------------------------------------
+# WEB SEARCH TOGGLE
+# --------------------------------------------------------
+
+st.subheader("🌐 Web Search")
+
+st.session_state.web_search_enabled = st.toggle(
+    "Enable Web Search",
+    value=st.session_state.web_search_enabled,
+    key="web_search_toggle",
+    help=(
+        "When enabled, the assistant can search "
+        "the internet for current information."
     )
+)
 
-    st.divider()
+if st.session_state.web_search_enabled:
+    st.success("Web Search is ON")
+else:
+    st.caption("Web Search is OFF")
 
+st.divider()
+
+# --------------------------------------------------------
+# CHAT HISTORY
+# --------------------------------------------------------
     # --------------------------------------------------------
     # CHAT HISTORY
     # --------------------------------------------------------
 
-    st.subheader("💬 Chat History")
+st.subheader("💬 Chat History")
 
-    chats = get_chat_list()
+chats = get_chat_list()
 
-    if chats:
+if chats:
 
-        for chat in chats:
+    for chat in chats:
 
-            chat_id = chat.get(
+        chat_id = chat.get(
                 "chat_id"
             )
 
-            title = chat.get(
+        title = chat.get(
                 "title",
                 "New Chat"
             )
 
-            if not chat_id:
+        if not chat_id:
                 continue
 
-            button_label = title
+        button_label = title
 
-            if chat_id == st.session_state.chat_id:
+        if chat_id == st.session_state.chat_id:
 
                 button_label = f"📌 {title}"
 
-            if st.button(
+        if st.button(
                 button_label,
                 key=f"chat_{chat_id}",
                 use_container_width=True
@@ -936,7 +966,8 @@ if st.session_state.chat_id:
                     f"{API_URL}/chat/",
                     json={
                         "chat_id": st.session_state.chat_id,
-                        "message": user_question
+                        "message": user_question,
+                        "web_search": st.session_state.web_search_enabled
                     },
                     timeout=180
                 )

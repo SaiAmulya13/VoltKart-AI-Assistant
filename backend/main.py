@@ -10,7 +10,10 @@ from backend.api.upload import router as upload_router
 from backend.api.chat import router as chat_router
 
 
-# Initialize database when application starts
+# ============================================================
+# DATABASE INITIALIZATION
+# ============================================================
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
 
@@ -19,7 +22,10 @@ async def lifespan(app: FastAPI):
     yield
 
 
-# Create FastAPI application
+# ============================================================
+# CREATE FASTAPI APPLICATION
+# ============================================================
+
 app = FastAPI(
     title="VoltKart AI Assistant",
     description="Multi-Source AI Chat Assistant API",
@@ -28,7 +34,10 @@ app = FastAPI(
 )
 
 
-# Allow frontend communication
+# ============================================================
+# CORS CONFIGURATION
+# ============================================================
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -41,12 +50,18 @@ app.add_middleware(
 )
 
 
-# Register API routers
+# ============================================================
+# REGISTER API ROUTERS
+# ============================================================
+
 app.include_router(upload_router)
 app.include_router(chat_router)
 
 
-# Health check
+# ============================================================
+# HOME ENDPOINT
+# ============================================================
+
 @app.get("/")
 def home():
 
@@ -55,6 +70,10 @@ def home():
         "status": "Backend is running"
     }
 
+
+# ============================================================
+# HEALTH CHECK
+# ============================================================
 
 @app.get("/health")
 def health_check():

@@ -25,6 +25,9 @@ from backend.services.uploaded_csv_service import (
 from backend.services.multi_csv_service import (
     answer_multi_csv_question
 )
+from backend.services.web_search_service import (
+    generate_web_search_answer
+)
 
 
 # ==========================================
@@ -650,7 +653,8 @@ def get_context_store(chat_history=None):
 
 def generate_chat_response(
     question,
-    chat_history=None
+    chat_history=None,
+    web_search=False
 ):
 
     question_lower = question.lower()
@@ -664,7 +668,27 @@ def generate_chat_response(
     context_store = get_context_store(
         chat_history
     )
+    # --------------------------------------
+# WEB SEARCH
+# --------------------------------------
 
+    if web_search:
+        result = generate_web_search_answer(
+        question,
+        chat_history=chat_history
+    )
+
+        return {
+            "answer": result.get(
+               "answer",
+               "Unable to generate a web search answer."
+            ),
+            "citations": result.get(
+            "citations",
+            []
+          ),
+          "engine": "web_search"
+       }
     # --------------------------------------
     # Detect explicit uploaded CSV questions
     # --------------------------------------
