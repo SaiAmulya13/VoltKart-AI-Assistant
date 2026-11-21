@@ -1,6 +1,7 @@
 
 import uuid
 import json
+import re
 from datetime import datetime, timezone
 
 from backend.database.db import get_connection
@@ -293,7 +294,7 @@ def is_hybrid_question(question):
 
 
 # ==========================================
-# 9. Identify Multi-CSV questions
+# 9. Detect multi-CSV questions
 # ==========================================
 
 def is_multi_csv_question(question):
@@ -368,9 +369,37 @@ def is_multi_csv_question(question):
                 "by spending",
                 "spend at",
                 "spending at",
+                "spent the most",
                 "bought a laptop",
                 "home city",
                 "platinum",
+                "that store",
+                "same store",
+            ]
+        )
+    ):
+        return True
+
+    # Follow-up questions about the previous store
+
+    if (
+        any(
+            phrase in question_lower
+            for phrase in [
+                "at that store",
+                "at the same store",
+                "from that store",
+                "that store",
+            ]
+        )
+        and any(
+            word in question_lower
+            for word in [
+                "customer",
+                "spent",
+                "spend",
+                "bought",
+                "purchase",
             ]
         )
     ):
@@ -518,7 +547,105 @@ def is_multi_csv_question(question):
 
 
 # ==========================================
-# 10. Generate response using CSV or RAG
+# 10. Extract store context from chat history
+# ==========================================
+
+
+def get_context_store(chat_history=None):
+
+    if not chat_history:
+        return None
+
+    for index in range(
+        len(chat_history) - 1,
+        -1,
+        -1
+    ):
+
+        message = chat_history[index]
+
+        if isinstance(message, dict):
+            role = message.get("role", "")
+            content = message.get("content", "")
+        else:
+            role = getattr(message, "role", "")
+            content = getattr(message, "content", "")
+
+        if role != "assistant":
+            continue
+
+        if not isinstance(content, str):
+            continue
+
+        previous_user_question = ""
+
+        for previous_index in range(
+            index - 1,
+            -1,
+            -1
+        ):
+
+            previous_message = chat_history[
+                previous_index
+            ]
+
+            if isinstance(previous_message, dict):
+                previous_role = previous_message.get(
+                    "role", ""
+                )
+                previous_content = previous_message.get(
+                    "content", ""
+                )
+            else:
+                previous_role = getattr(
+                    previous_message, "role", ""
+                )
+                previous_content = getattr(
+                    previous_message, "content", ""
+                )
+
+            if previous_role == "user":
+                previous_user_question = str(
+                    previous_content
+                ).lower()
+                break
+
+        store_question = (
+            "store" in previous_user_question
+            and any(
+                phrase in previous_user_question
+                for phrase in [
+                    "revenue",
+                    "highest",
+                    "top",
+                    "sales",
+                    "manager",
+                ]
+            )
+        )
+
+        if not store_question:
+            continue
+
+        # Extract store name and stop before
+        # words such as "generated" or "has".
+
+        store_match = re.search(
+            r"\b(VoltKart\s+[A-Za-z]+(?:\s+[A-Za-z]+)?)"
+            r"(?=\s+(?:generated|has|had|with|was|is)\b"
+            r"|[.\n]|$)",
+            content,
+            re.IGNORECASE
+        )
+
+        if store_match:
+            return store_match.group(1).strip()
+
+    return None
+
+
+# ==========================================
+# 11. Generate response using CSV or RAG
 # ==========================================
 
 def generate_chat_response(
@@ -530,6 +657,12 @@ def generate_chat_response(
 
     question_type = identify_question_type(
         question
+    )
+
+    # Get previous store name for follow-up questions
+
+    context_store = get_context_store(
+        chat_history
     )
 
     # --------------------------------------
@@ -552,6 +685,7 @@ def generate_chat_response(
     if is_explicit_uploaded_csv:
 
         try:
+
             result = answer_uploaded_csv_question(
                 question
             )
@@ -587,12 +721,12 @@ def generate_chat_response(
     ):
 
         try:
-            # IMPORTANT:
-            # Use the multi-CSV service here.
-            # This supports specific order IDs.
+
+            # Business data lookup with context
 
             csv_result = answer_multi_csv_question(
-                question
+                question,
+                context_store=context_store
             )
 
             # Retrieve company policy/document answer
@@ -619,8 +753,8 @@ def generate_chat_response(
                 + str(rag_answer)
             )
 
-            # Multi-CSV service returns "sources"
-            # while RAG returns "citations".
+            # Multi-CSV service returns sources
+            # while RAG returns citations
 
             csv_citations = csv_result.get(
                 "citations",
@@ -661,8 +795,12 @@ def generate_chat_response(
                 )
 
                 if citation_key not in seen:
+
                     seen.add(citation_key)
-                    unique_citations.append(citation)
+
+                    unique_citations.append(
+                        citation
+                    )
 
             return {
                 "answer": combined_answer,
@@ -693,8 +831,10 @@ def generate_chat_response(
     if is_multi_csv_question(question):
 
         try:
+
             result = answer_multi_csv_question(
-                question
+                question,
+                context_store=context_store
             )
 
             return {
@@ -728,6 +868,7 @@ def generate_chat_response(
     if question_type == "uploaded_csv":
 
         try:
+
             result = answer_uploaded_csv_question(
                 question
             )
@@ -810,7 +951,7 @@ def generate_chat_response(
 
 
 # ==========================================
-# 11. Rename an existing chat
+# 12. Rename an existing chat
 # ==========================================
 
 def rename_chat(chat_id, new_title):
@@ -825,6 +966,7 @@ def rename_chat(chat_id, new_title):
         )
 
     if len(new_title) > 60:
+
         new_title = (
             new_title[:57].rstrip()
             + "..."
@@ -833,6 +975,7 @@ def rename_chat(chat_id, new_title):
     connection = get_connection()
 
     try:
+
         cursor = connection.execute(
             """
             UPDATE chats
