@@ -4,7 +4,6 @@ import numpy as np
 import faiss
 
 from backend.config import BASE_DIR
-from backend.services.embedding_service import model
 
 
 # --------------------------------
@@ -363,10 +362,14 @@ def search_documents(
             "top_k must be at least 1."
         )
 
+    # Load FAISS index and metadata
     index, chunks = load_vector_store()
 
     if index.ntotal == 0:
         return []
+
+    # Load embedding model only when document search is requested
+    from backend.services.embedding_service import model
 
     # Generate question embedding
     query_embedding = model.encode(
@@ -379,17 +382,22 @@ def search_documents(
         dtype="float32"
     )
 
-    # Get stored vectors
-    all_vectors = index.reconstruct_n(
-        0,
+    # Search directly with FAISS
+    # This avoids reconstructing the entire vector matrix
+    distances, matched_indices = index.search(
+        query_embedding,
         index.ntotal
     )
 
-    # Calculate similarity
-    scores = np.dot(
-        all_vectors,
-        query_embedding[0]
-    )
+    # Store similarity scores by vector index
+    score_by_index = {
+        int(index_id): float(score)
+        for index_id, score in zip(
+            matched_indices[0],
+            distances[0]
+        )
+        if index_id >= 0
+    }
 
     if document_family is None:
 
@@ -401,7 +409,7 @@ def search_documents(
         range(len(chunks))
     )
 
-    # Filter by family
+    # Filter by document family
     if document_family:
 
         candidate_indices = [
@@ -410,7 +418,7 @@ def search_documents(
             == document_family
         ]
 
-    # Filter by latest version
+    # Filter by latest document version
     if latest_only:
 
         candidate_chunks = [
@@ -434,7 +442,10 @@ def search_documents(
 
     # Sort by similarity score
     candidate_indices.sort(
-        key=lambda i: scores[i],
+        key=lambda i: score_by_index.get(
+            i,
+            float("-inf")
+        ),
         reverse=True
     )
 
@@ -444,9 +455,7 @@ def search_documents(
 
         result = chunks[i].copy()
 
-        result["similarity_score"] = float(
-            scores[i]
-        )
+        result["similarity_score"] = score_by_index[i]
 
         results.append(result)
 
