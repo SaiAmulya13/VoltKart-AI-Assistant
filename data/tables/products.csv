@@ -1,0 +1,23 @@
+product_id,product_name,category,brand,list_price_inr,launch_date
+P001,Nexora X12 5G,Smartphones,Nexora,34999,2023-11-28
+P002,Nexora X12 Pro,Smartphones,Nexora,54999,2023-06-04
+P003,Zephyr Neo 8,Smartphones,Zephyr,18999,2024-02-09
+P004,Zephyr Ultra 9,Smartphones,Zephyr,79999,2023-02-19
+P005,Lumio Book Air 14,Laptops,Lumio,62999,2023-03-16
+P006,Lumio Book Pro 16,Laptops,Lumio,124999,2024-07-02
+P007,Orbitron Swift 15,Laptops,Orbitron,48999,2023-04-07
+P008,Orbitron Titan G17,Laptops,Orbitron,139999,2024-01-10
+P009,"Kestrel Vision 43"" 4K TV",Televisions,Kestrel,32999,2024-08-19
+P010,"Kestrel Vision 55"" 4K TV",Televisions,Kestrel,49999,2023-03-01
+P011,"Auralis OLED 65"" TV",Televisions,Auralis,164999,2024-06-03
+P012,Auralis Pods Lite,Audio,Auralis,3999,2023-08-08
+P013,Auralis Pods Max ANC,Audio,Auralis,14999,2023-02-08
+P014,Zephyr BoomBox 300,Audio,Zephyr,8999,2023-03-30
+P015,Kestrel Soundbar 2.1,Audio,Kestrel,17999,2024-03-20
+P016,Nexora Watch S2,Wearables,Nexora,12999,2024-03-04
+P017,Zephyr FitBand 5,Wearables,Zephyr,3499,2023-03-13
+P018,Lumio Watch Pro,Wearables,Lumio,29999,2023-09-04
+P019,VoltKart 65W USB-C Charger,Accessories,VoltKart,1999,2023-04-03
+P020,Orbitron Wireless Mouse,Accessories,Orbitron,1299,2024-07-18
+P021,Lumio Laptop Sleeve 14,Accessories,Lumio,1499,2024-03-10
+P022,Nexora 20000mAh Power Bank,Accessories,Nexora,2499,2023-03-02

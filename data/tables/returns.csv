@@ -1,0 +1,65 @@
+return_id,order_item_id,return_date,return_reason,refund_amount_inr
+R0001,I000001,2025-05-18,Better price elsewhere,2848.1
+R0002,I000003,2026-03-12,Wrong item delivered,25649.1
+R0003,I000022,2025-04-14,Not as described,6998.0
+R0004,I000033,2025-03-28,Wrong item delivered,75999.05
+R0005,I000058,2026-04-20,Better price elsewhere,9972.0
+R0006,I000101,2025-11-02,Not as described,3609.05
+R0007,I000127,2025-04-03,Changed mind,1299.0
+R0008,I000132,2025-08-04,Not as described,29998.0
+R0009,I000133,2026-05-11,Defective on arrival,33249.0
+R0010,I000135,2025-03-30,Not as described,34999.0
+R0011,I000250,2026-07-22,Changed mind,14249.0
+R0012,I000262,2025-07-06,Defective on arrival,13499.1
+R0013,I000288,2025-11-19,Wrong item delivered,45124.05
+R0014,I000321,2026-06-21,Not as described,100936.65
+R0015,I000326,2025-08-17,Defective on arrival,4047.3
+R0016,I000366,2026-01-08,Defective on arrival,7218.1
+R0017,I000381,2025-04-27,Wrong item delivered,54999.0
+R0018,I000399,2025-11-04,Wrong item delivered,3324.05
+R0019,I000469,2025-03-06,Better price elsewhere,22947.45
+R0020,I000489,2025-09-19,Not as described,62999.0
+R0021,I000495,2025-04-07,Better price elsewhere,31499.1
+R0022,I000521,2025-04-02,Better price elsewhere,32999.0
+R0023,I000538,2026-03-24,Wrong item delivered,24698.0
+R0024,I000566,2026-06-23,Better price elsewhere,72199.05
+R0025,I000569,2026-04-17,Not as described,47024.1
+R0026,I000586,2026-02-13,Defective on arrival,15341.65
+R0027,I000608,2025-09-11,Defective on arrival,34999.0
+R0028,I000620,2025-07-23,Defective on arrival,2374.05
+R0029,I000624,2025-07-29,Defective on arrival,2974.15
+R0030,I000630,2026-05-27,Wrong item delivered,33249.0
+R0031,I000670,2025-09-06,Better price elsewhere,1999.0
+R0032,I000689,2025-01-30,Changed mind,2598.0
+R0033,I000705,2025-11-08,Changed mind,42747.0
+R0034,I000706,2025-05-08,Wrong item delivered,17999.0
+R0035,I000711,2025-08-05,Not as described,46749.15
+R0036,I000718,2025-09-04,Changed mind,3499.0
+R0037,I000737,2025-05-12,Changed mind,29998.0
+R0038,I000775,2025-04-20,Changed mind,1499.0
+R0039,I000784,2026-04-15,Wrong item delivered,118749.0
+R0040,I000805,2025-04-12,Changed mind,54999.0
+R0041,I000817,2025-11-20,Not as described,49636.55
+R0042,I000818,2025-11-23,Not as described,14249.0
+R0043,I000872,2026-06-02,Better price elsewhere,2255.3
+R0044,I000875,2025-02-12,Defective on arrival,42499.15
+R0045,I000916,2026-06-16,Not as described,2705.6
+R0046,I000928,2026-03-02,Wrong item delivered,29068.3
+R0047,I000929,2025-11-11,Not as described,3702.0
+R0048,I000930,2025-08-07,Defective on arrival,52249.05
+R0049,I000940,2025-11-24,Better price elsewhere,1899.0
+R0050,I000967,2025-04-08,Changed mind,14249.05
+R0051,I000974,2026-04-17,Wrong item delivered,18049.0
+R0052,I001022,2025-10-07,Changed mind,3499.0
+R0053,I001096,2026-02-22,Wrong item delivered,44411.65
+R0054,I001108,2026-04-12,Better price elsewhere,68399.1
+R0055,I001136,2026-04-11,Better price elsewhere,12349.0
+R0056,I001137,2025-12-01,Changed mind,112811.55
+R0057,I001197,2025-02-17,Better price elsewhere,54999.0
+R0058,I001222,2025-02-09,Wrong item delivered,124999.0
+R0059,I001242,2026-04-04,Not as described,12111.65
+R0060,I001280,2025-05-30,Defective on arrival,1299.0
+R0061,I001289,2025-06-17,Defective on arrival,17999.0
+R0062,I001301,2025-07-26,Wrong item delivered,29999.0
+R0063,I001306,2025-05-25,Defective on arrival,18049.05
+R0064,I001324,2025-11-04,Not as described,52249.0

@@ -1,0 +1,24 @@
+
+# Python virtual environment
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Environment variables and API keys
+.env
+
+# macOS unnecessary files
+.DS_Store
+._*
+__MACOSX/
+
+# Uploaded files
+data/uploads/
+
+# Generated vector database
+data/vector_store/
+
+# SQLite database
+*.db

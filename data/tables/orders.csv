@@ -1,0 +1,901 @@
+order_id,customer_id,store_id,order_date,channel,payment_method,order_status
+O00001,C0093,S08,2025-05-16,Online,UPI,Delivered
+O00002,C0116,S03,2026-02-20,In-store,Cash,Delivered
+O00003,C0096,S02,2025-03-08,In-store,Debit Card,Delivered
+O00004,C0064,S05,2025-09-30,In-store,Cash,Delivered
+O00005,C0106,S06,2026-04-07,Online,UPI,Delivered
+O00006,C0062,S03,2025-11-05,In-store,Credit Card,Delivered
+O00007,C0086,S03,2026-04-06,In-store,UPI,Delivered
+O00008,C0052,S04,2025-01-21,Online,EMI,Delivered
+O00009,C0093,S08,2025-05-09,Online,UPI,Delivered
+O00010,C0080,S03,2025-01-23,In-store,EMI,Delivered
+O00011,C0115,S05,2025-09-12,Online,EMI,Cancelled
+O00012,C0011,S04,2025-01-02,Online,Debit Card,Cancelled
+O00013,C0019,S07,2025-11-04,In-store,Debit Card,Delivered
+O00014,C0063,S01,2026-05-02,In-store,Cash,Delivered
+O00015,C0108,S05,2025-03-25,In-store,Credit Card,Delivered
+O00016,C0052,S04,2025-11-16,Online,Credit Card,Delivered
+O00017,C0015,S08,2025-05-30,Online,EMI,Delivered
+O00018,C0081,S06,2025-04-26,Online,Credit Card,Delivered
+O00019,C0090,S06,2026-03-07,Online,UPI,Delivered
+O00020,C0115,S05,2025-07-17,In-store,UPI,Delivered
+O00021,C0119,S05,2025-03-06,Online,UPI,Delivered
+O00022,C0077,S06,2025-01-04,Online,UPI,Delivered
+O00023,C0065,S06,2026-03-17,Online,Credit Card,Delivered
+O00024,C0101,S03,2025-06-13,In-store,Cash,Delivered
+O00025,C0022,S03,2025-08-02,In-store,Credit Card,Delivered
+O00026,C0032,S05,2025-10-28,In-store,Debit Card,Delivered
+O00027,C0073,S06,2025-07-12,In-store,EMI,Delivered
+O00028,C0060,S03,2026-04-05,Online,Credit Card,Delivered
+O00029,C0096,S07,2026-06-09,Online,UPI,Delivered
+O00030,C0037,S01,2025-02-15,In-store,UPI,Delivered
+O00031,C0053,S03,2025-02-02,Online,UPI,Delivered
+O00032,C0102,S04,2025-10-05,In-store,Cash,Cancelled
+O00033,C0107,S06,2025-01-19,Online,Credit Card,Delivered
+O00034,C0024,S05,2026-02-20,Online,Credit Card,Delivered
+O00035,C0095,S08,2026-06-01,In-store,EMI,Delivered
+O00036,C0051,S08,2025-11-05,In-store,Debit Card,Delivered
+O00037,C0122,S08,2025-07-07,Online,UPI,Delivered
+O00038,C0010,S03,2025-11-28,In-store,Cash,Delivered
+O00039,C0113,S03,2025-07-03,In-store,Cash,Delivered
+O00040,C0092,S04,2026-03-17,In-store,UPI,Delivered
+O00041,C0035,S02,2025-01-27,Online,Credit Card,Delivered
+O00042,C0090,S05,2025-09-16,In-store,Cash,Delivered
+O00043,C0130,S03,2025-09-01,In-store,Cash,Delivered
+O00044,C0134,S04,2025-04-18,In-store,Debit Card,Delivered
+O00045,C0081,S04,2025-01-02,Online,EMI,Delivered
+O00046,C0059,S05,2025-02-16,In-store,Debit Card,Delivered
+O00047,C0035,S03,2025-07-29,In-store,Credit Card,Delivered
+O00048,C0003,S06,2025-02-27,Online,EMI,Delivered
+O00049,C0001,S01,2025-02-15,In-store,Credit Card,Delivered
+O00050,C0045,S08,2026-06-05,In-store,Cash,Delivered
+O00051,C0116,S03,2025-06-29,In-store,UPI,Delivered
+O00052,C0134,S04,2025-09-29,In-store,UPI,Delivered
+O00053,C0052,S04,2025-06-13,Online,Debit Card,Delivered
+O00054,C0136,S04,2025-01-07,Online,EMI,Delivered
+O00055,C0042,S03,2025-12-20,Online,UPI,Delivered
+O00056,C0099,S04,2025-04-20,In-store,UPI,Cancelled
+O00057,C0053,S03,2025-10-29,In-store,Debit Card,Delivered
+O00058,C0129,S04,2026-05-03,Online,UPI,Delivered
+O00059,C0138,S08,2025-08-10,Online,Credit Card,Delivered
+O00060,C0002,S06,2025-12-23,In-store,Cash,Delivered
+O00061,C0027,S02,2025-12-01,In-store,UPI,Delivered
+O00062,C0060,S03,2026-04-17,In-store,Debit Card,Delivered
+O00063,C0083,S07,2025-06-23,In-store,EMI,Delivered
+O00064,C0078,S06,2025-06-08,Online,EMI,Delivered
+O00065,C0027,S02,2025-06-18,Online,Credit Card,Cancelled
+O00066,C0028,S01,2025-10-15,In-store,UPI,Delivered
+O00067,C0111,S01,2026-03-08,Online,Credit Card,Delivered
+O00068,C0108,S05,2025-09-06,Online,Debit Card,Delivered
+O00069,C0047,S04,2025-12-02,Online,UPI,Delivered
+O00070,C0052,S04,2026-06-16,In-store,EMI,Delivered
+O00071,C0134,S04,2025-12-18,In-store,Credit Card,Delivered
+O00072,C0016,S06,2025-01-14,In-store,EMI,Delivered
+O00073,C0101,S03,2026-04-19,In-store,Credit Card,Delivered
+O00074,C0106,S06,2026-04-25,Online,UPI,Delivered
+O00075,C0001,S02,2025-10-15,In-store,Cash,Delivered
+O00076,C0084,S03,2025-05-24,In-store,UPI,Delivered
+O00077,C0037,S01,2025-08-28,In-store,Credit Card,Delivered
+O00078,C0077,S06,2025-07-22,In-store,Cash,Delivered
+O00079,C0036,S02,2026-04-30,In-store,Credit Card,Delivered
+O00080,C0002,S06,2025-06-14,Online,Debit Card,Delivered
+O00081,C0093,S08,2025-01-30,In-store,UPI,Delivered
+O00082,C0033,S05,2025-12-13,In-store,Cash,Delivered
+O00083,C0065,S06,2025-02-23,Online,UPI,Delivered
+O00084,C0023,S05,2025-02-11,In-store,EMI,Delivered
+O00085,C0122,S07,2025-03-03,Online,EMI,Delivered
+O00086,C0010,S01,2026-03-08,Online,Debit Card,Delivered
+O00087,C0078,S06,2025-07-09,In-store,EMI,Delivered
+O00088,C0040,S05,2026-05-02,Online,UPI,Delivered
+O00089,C0056,S08,2025-05-05,In-store,Cash,Delivered
+O00090,C0038,S08,2025-03-28,In-store,Cash,Delivered
+O00091,C0043,S05,2026-05-14,Online,UPI,Delivered
+O00092,C0107,S03,2026-05-04,In-store,EMI,Delivered
+O00093,C0004,S06,2025-06-04,Online,Credit Card,Delivered
+O00094,C0041,S05,2025-02-13,In-store,Debit Card,Cancelled
+O00095,C0139,S03,2026-05-12,Online,Debit Card,Delivered
+O00096,C0118,S04,2025-03-31,In-store,Credit Card,Delivered
+O00097,C0123,S08,2026-06-03,Online,UPI,Delivered
+O00098,C0127,S02,2026-01-19,Online,UPI,Delivered
+O00099,C0025,S08,2025-02-04,In-store,EMI,Delivered
+O00100,C0034,S01,2025-09-18,Online,UPI,Delivered
+O00101,C0017,S06,2026-02-11,Online,Debit Card,Delivered
+O00102,C0047,S04,2026-04-05,Online,Credit Card,Delivered
+O00103,C0082,S03,2025-01-06,Online,EMI,Delivered
+O00104,C0044,S03,2026-03-28,In-store,Cash,Delivered
+O00105,C0096,S07,2025-05-24,Online,UPI,Delivered
+O00106,C0030,S04,2026-01-10,In-store,Credit Card,Delivered
+O00107,C0108,S05,2026-02-26,In-store,Debit Card,Delivered
+O00108,C0030,S04,2025-06-07,Online,EMI,Delivered
+O00109,C0111,S02,2025-09-25,Online,UPI,Delivered
+O00110,C0088,S02,2026-06-08,In-store,Credit Card,Delivered
+O00111,C0036,S01,2025-07-04,In-store,Credit Card,Delivered
+O00112,C0050,S05,2025-11-12,In-store,UPI,Delivered
+O00113,C0127,S08,2025-04-03,In-store,Credit Card,Delivered
+O00114,C0010,S03,2025-06-17,Online,Debit Card,Delivered
+O00115,C0083,S05,2026-01-26,Online,UPI,Cancelled
+O00116,C0138,S04,2025-05-18,In-store,EMI,Delivered
+O00117,C0005,S08,2025-04-09,Online,UPI,Delivered
+O00118,C0046,S07,2025-02-16,In-store,UPI,Delivered
+O00119,C0059,S05,2025-05-31,Online,Credit Card,Cancelled
+O00120,C0135,S06,2025-02-07,In-store,Debit Card,Delivered
+O00121,C0014,S06,2025-11-29,In-store,Credit Card,Delivered
+O00122,C0006,S08,2025-08-19,In-store,UPI,Delivered
+O00123,C0010,S03,2025-04-13,In-store,Credit Card,Cancelled
+O00124,C0043,S05,2025-05-04,In-store,UPI,Delivered
+O00125,C0076,S01,2026-02-21,Online,EMI,Delivered
+O00126,C0094,S07,2026-04-17,Online,UPI,Delivered
+O00127,C0099,S04,2026-02-10,In-store,Debit Card,Delivered
+O00128,C0006,S06,2025-06-12,Online,UPI,Delivered
+O00129,C0134,S04,2025-08-19,Online,UPI,Delivered
+O00130,C0133,S03,2025-04-08,Online,Debit Card,Delivered
+O00131,C0031,S03,2026-05-25,In-store,Cash,Delivered
+O00132,C0118,S04,2025-10-22,Online,EMI,Delivered
+O00133,C0128,S06,2026-01-25,In-store,Credit Card,Delivered
+O00134,C0083,S07,2025-09-06,Online,UPI,Delivered
+O00135,C0138,S08,2026-03-24,In-store,Cash,Delivered
+O00136,C0135,S07,2025-08-23,In-store,EMI,Delivered
+O00137,C0113,S03,2025-12-18,Online,Credit Card,Delivered
+O00138,C0029,S04,2025-10-29,Online,Credit Card,Delivered
+O00139,C0011,S04,2026-02-26,In-store,Debit Card,Delivered
+O00140,C0128,S03,2025-09-30,Online,EMI,Delivered
+O00141,C0134,S04,2026-05-18,Online,UPI,Delivered
+O00142,C0044,S03,2025-02-03,In-store,Debit Card,Delivered
+O00143,C0062,S03,2025-09-13,In-store,Debit Card,Delivered
+O00144,C0018,S04,2025-09-06,Online,UPI,Delivered
+O00145,C0075,S02,2026-02-10,Online,Debit Card,Delivered
+O00146,C0063,S01,2026-02-01,In-store,Cash,Delivered
+O00147,C0033,S05,2026-03-30,In-store,Credit Card,Delivered
+O00148,C0054,S04,2025-11-01,Online,UPI,Delivered
+O00149,C0132,S04,2025-04-04,In-store,UPI,Delivered
+O00150,C0046,S07,2025-08-26,In-store,UPI,Delivered
+O00151,C0080,S03,2025-04-01,In-store,Debit Card,Delivered
+O00152,C0094,S07,2025-12-26,Online,Credit Card,Cancelled
+O00153,C0075,S01,2025-04-28,In-store,UPI,Delivered
+O00154,C0046,S07,2025-08-22,Online,UPI,Delivered
+O00155,C0074,S06,2025-02-13,Online,Credit Card,Delivered
+O00156,C0023,S05,2026-03-04,Online,Debit Card,Delivered
+O00157,C0116,S03,2026-06-05,In-store,EMI,Delivered
+O00158,C0042,S03,2025-08-30,In-store,Credit Card,Delivered
+O00159,C0125,S02,2026-05-10,In-store,Credit Card,Cancelled
+O00160,C0037,S02,2025-09-04,In-store,Credit Card,Delivered
+O00161,C0075,S01,2025-01-13,In-store,Debit Card,Delivered
+O00162,C0114,S03,2026-04-25,Online,UPI,Delivered
+O00163,C0003,S06,2026-01-03,Online,Credit Card,Delivered
+O00164,C0135,S07,2025-06-22,In-store,EMI,Delivered
+O00165,C0095,S08,2025-09-17,In-store,UPI,Cancelled
+O00166,C0021,S03,2025-05-26,Online,UPI,Delivered
+O00167,C0096,S07,2025-01-03,In-store,Credit Card,Delivered
+O00168,C0046,S07,2025-06-18,In-store,EMI,Delivered
+O00169,C0137,S02,2025-06-08,Online,UPI,Delivered
+O00170,C0095,S08,2026-05-08,Online,EMI,Delivered
+O00171,C0022,S03,2025-05-31,Online,Debit Card,Delivered
+O00172,C0052,S04,2025-04-25,In-store,Credit Card,Delivered
+O00173,C0029,S04,2026-06-10,Online,UPI,Delivered
+O00174,C0030,S04,2026-06-12,In-store,EMI,Delivered
+O00175,C0035,S03,2026-03-13,Online,EMI,Delivered
+O00176,C0135,S07,2026-01-01,Online,UPI,Delivered
+O00177,C0091,S02,2025-07-17,Online,UPI,Delivered
+O00178,C0075,S02,2026-01-25,Online,EMI,Cancelled
+O00179,C0039,S01,2026-05-14,In-store,UPI,Delivered
+O00180,C0133,S03,2025-03-19,In-store,Credit Card,Delivered
+O00181,C0085,S05,2026-04-25,In-store,Debit Card,Delivered
+O00182,C0012,S07,2025-05-30,Online,Debit Card,Delivered
+O00183,C0093,S08,2025-10-16,Online,UPI,Delivered
+O00184,C0087,S04,2025-11-27,Online,Credit Card,Delivered
+O00185,C0078,S06,2025-11-12,In-store,UPI,Delivered
+O00186,C0091,S02,2026-04-25,In-store,UPI,Delivered
+O00187,C0043,S05,2025-10-02,In-store,Cash,Delivered
+O00188,C0013,S02,2025-03-23,In-store,Credit Card,Delivered
+O00189,C0008,S01,2025-08-06,In-store,Cash,Delivered
+O00190,C0086,S03,2026-05-22,Online,UPI,Delivered
+O00191,C0085,S05,2025-06-10,In-store,EMI,Delivered
+O00192,C0040,S05,2025-12-05,In-store,UPI,Delivered
+O00193,C0134,S04,2026-06-27,Online,EMI,Delivered
+O00194,C0035,S03,2025-05-06,In-store,Debit Card,Cancelled
+O00195,C0042,S03,2026-06-26,In-store,Cash,Cancelled
+O00196,C0100,S07,2026-04-17,In-store,UPI,Delivered
+O00197,C0016,S04,2025-08-22,Online,Credit Card,Delivered
+O00198,C0084,S03,2026-03-12,Online,Credit Card,Cancelled
+O00199,C0035,S03,2025-11-04,In-store,Credit Card,Delivered
+O00200,C0113,S03,2025-07-06,In-store,UPI,Delivered
+O00201,C0091,S02,2025-04-10,Online,UPI,Delivered
+O00202,C0004,S06,2025-02-08,In-store,UPI,Delivered
+O00203,C0125,S01,2025-05-20,In-store,EMI,Delivered
+O00204,C0058,S05,2025-03-16,In-store,Debit Card,Delivered
+O00205,C0093,S08,2025-10-01,In-store,EMI,Delivered
+O00206,C0069,S06,2026-02-13,In-store,Credit Card,Delivered
+O00207,C0002,S05,2025-09-02,Online,EMI,Delivered
+O00208,C0081,S04,2026-04-12,Online,EMI,Delivered
+O00209,C0097,S08,2025-12-30,Online,EMI,Delivered
+O00210,C0122,S08,2025-12-23,In-store,Credit Card,Delivered
+O00211,C0040,S01,2026-04-17,In-store,Debit Card,Delivered
+O00212,C0134,S04,2026-06-18,In-store,Cash,Delivered
+O00213,C0045,S08,2026-06-14,In-store,Cash,Delivered
+O00214,C0065,S06,2025-01-19,Online,UPI,Delivered
+O00215,C0113,S03,2025-04-04,In-store,Credit Card,Delivered
+O00216,C0066,S06,2025-12-27,In-store,EMI,Delivered
+O00217,C0007,S06,2025-04-21,Online,UPI,Delivered
+O00218,C0132,S04,2025-01-10,Online,EMI,Delivered
+O00219,C0027,S02,2026-05-24,In-store,UPI,Delivered
+O00220,C0036,S03,2026-02-21,Online,Debit Card,Delivered
+O00221,C0068,S05,2025-03-30,In-store,EMI,Delivered
+O00222,C0079,S04,2025-07-26,In-store,Cash,Delivered
+O00223,C0137,S06,2025-03-11,In-store,UPI,Delivered
+O00224,C0053,S02,2025-03-01,In-store,UPI,Delivered
+O00225,C0076,S01,2025-08-05,In-store,EMI,Delivered
+O00226,C0066,S06,2026-03-30,Online,Credit Card,Delivered
+O00227,C0040,S05,2025-11-13,Online,Credit Card,Cancelled
+O00228,C0075,S01,2025-08-17,Online,UPI,Delivered
+O00229,C0091,S01,2025-05-06,Online,Debit Card,Delivered
+O00230,C0078,S06,2025-04-01,In-store,EMI,Delivered
+O00231,C0039,S07,2025-11-04,In-store,Cash,Delivered
+O00232,C0029,S04,2025-06-15,Online,UPI,Delivered
+O00233,C0091,S01,2025-03-20,In-store,Debit Card,Delivered
+O00234,C0031,S07,2025-11-29,In-store,EMI,Delivered
+O00235,C0014,S03,2026-05-16,Online,Credit Card,Delivered
+O00236,C0133,S02,2025-04-23,In-store,EMI,Delivered
+O00237,C0063,S01,2025-03-16,Online,Credit Card,Delivered
+O00238,C0106,S06,2026-02-21,In-store,EMI,Delivered
+O00239,C0057,S05,2025-12-06,Online,UPI,Delivered
+O00240,C0017,S06,2025-07-23,Online,UPI,Delivered
+O00241,C0067,S05,2025-11-07,Online,UPI,Delivered
+O00242,C0065,S06,2025-08-26,In-store,Cash,Delivered
+O00243,C0087,S04,2026-03-13,Online,EMI,Delivered
+O00244,C0118,S04,2025-05-30,In-store,Cash,Delivered
+O00245,C0138,S08,2025-09-05,In-store,Cash,Delivered
+O00246,C0058,S05,2025-12-26,Online,Debit Card,Delivered
+O00247,C0065,S07,2025-12-27,Online,Credit Card,Delivered
+O00248,C0097,S08,2026-06-19,Online,UPI,Delivered
+O00249,C0118,S04,2025-02-05,Online,Debit Card,Delivered
+O00250,C0072,S06,2025-09-05,In-store,EMI,Cancelled
+O00251,C0072,S06,2025-11-28,In-store,EMI,Delivered
+O00252,C0134,S05,2025-06-24,Online,UPI,Delivered
+O00253,C0122,S07,2025-07-22,Online,UPI,Delivered
+O00254,C0069,S08,2025-04-26,In-store,EMI,Delivered
+O00255,C0106,S06,2025-03-20,In-store,EMI,Delivered
+O00256,C0093,S02,2025-09-29,Online,EMI,Delivered
+O00257,C0046,S07,2025-05-01,Online,UPI,Delivered
+O00258,C0074,S06,2025-05-17,In-store,UPI,Delivered
+O00259,C0034,S01,2025-06-04,In-store,EMI,Delivered
+O00260,C0098,S05,2025-10-22,In-store,EMI,Delivered
+O00261,C0021,S03,2026-01-04,In-store,Debit Card,Delivered
+O00262,C0115,S05,2025-02-03,In-store,Cash,Delivered
+O00263,C0138,S08,2025-02-01,In-store,Cash,Delivered
+O00264,C0137,S06,2025-12-04,Online,EMI,Delivered
+O00265,C0049,S08,2025-04-25,In-store,UPI,Delivered
+O00266,C0051,S05,2025-09-29,In-store,UPI,Delivered
+O00267,C0042,S03,2025-11-20,Online,Credit Card,Delivered
+O00268,C0027,S02,2025-12-18,In-store,Cash,Cancelled
+O00269,C0131,S08,2026-02-03,In-store,Credit Card,Delivered
+O00270,C0137,S06,2026-01-24,In-store,Cash,Delivered
+O00271,C0119,S01,2026-05-12,Online,Credit Card,Delivered
+O00272,C0052,S04,2026-03-27,In-store,UPI,Delivered
+O00273,C0121,S07,2025-05-26,In-store,UPI,Delivered
+O00274,C0010,S01,2025-09-06,In-store,UPI,Delivered
+O00275,C0106,S06,2025-09-27,In-store,UPI,Delivered
+O00276,C0131,S08,2026-01-26,Online,EMI,Delivered
+O00277,C0138,S08,2025-03-21,Online,UPI,Delivered
+O00278,C0118,S04,2025-08-02,In-store,Cash,Cancelled
+O00279,C0062,S03,2025-04-14,In-store,Debit Card,Delivered
+O00280,C0055,S04,2026-06-17,In-store,UPI,Delivered
+O00281,C0047,S04,2025-10-28,In-store,Debit Card,Delivered
+O00282,C0122,S08,2025-11-30,In-store,EMI,Delivered
+O00283,C0062,S03,2025-12-17,Online,UPI,Delivered
+O00284,C0118,S04,2025-06-14,In-store,Cash,Cancelled
+O00285,C0055,S01,2025-08-12,In-store,Debit Card,Delivered
+O00286,C0043,S05,2025-10-19,Online,UPI,Delivered
+O00287,C0078,S06,2025-03-21,In-store,UPI,Delivered
+O00288,C0131,S08,2025-10-08,Online,Debit Card,Delivered
+O00289,C0118,S04,2025-12-17,In-store,Credit Card,Delivered
+O00290,C0003,S06,2025-07-14,In-store,Debit Card,Delivered
+O00291,C0023,S05,2025-08-17,In-store,Credit Card,Cancelled
+O00292,C0095,S08,2025-09-15,In-store,Credit Card,Delivered
+O00293,C0057,S05,2026-01-29,Online,Debit Card,Delivered
+O00294,C0121,S07,2026-03-25,In-store,UPI,Delivered
+O00295,C0031,S07,2025-07-15,In-store,Credit Card,Cancelled
+O00296,C0124,S07,2025-08-10,Online,UPI,Delivered
+O00297,C0081,S04,2025-08-06,In-store,Cash,Delivered
+O00298,C0093,S08,2025-03-11,In-store,Debit Card,Delivered
+O00299,C0009,S05,2025-08-28,Online,Debit Card,Delivered
+O00300,C0118,S05,2025-03-25,In-store,Cash,Cancelled
+O00301,C0103,S04,2025-01-26,Online,Credit Card,Delivered
+O00302,C0056,S08,2025-07-17,Online,Debit Card,Delivered
+O00303,C0067,S05,2026-04-11,In-store,Credit Card,Delivered
+O00304,C0036,S01,2026-06-19,In-store,Credit Card,Delivered
+O00305,C0058,S05,2025-06-04,Online,UPI,Delivered
+O00306,C0097,S08,2025-11-04,Online,UPI,Delivered
+O00307,C0098,S04,2025-07-05,Online,UPI,Delivered
+O00308,C0121,S07,2025-08-06,Online,UPI,Delivered
+O00309,C0054,S04,2026-02-23,In-store,Debit Card,Delivered
+O00310,C0056,S08,2025-09-30,In-store,EMI,Delivered
+O00311,C0089,S05,2026-03-24,In-store,Credit Card,Delivered
+O00312,C0053,S04,2025-09-12,Online,Debit Card,Delivered
+O00313,C0117,S06,2025-02-16,In-store,EMI,Delivered
+O00314,C0064,S05,2025-01-05,In-store,UPI,Delivered
+O00315,C0086,S03,2025-03-17,In-store,Cash,Delivered
+O00316,C0017,S06,2025-02-23,Online,Debit Card,Delivered
+O00317,C0099,S04,2025-10-30,Online,UPI,Delivered
+O00318,C0120,S07,2025-08-25,Online,EMI,Delivered
+O00319,C0118,S04,2025-09-04,Online,UPI,Delivered
+O00320,C0048,S05,2025-07-29,Online,Credit Card,Delivered
+O00321,C0079,S04,2025-02-26,Online,UPI,Delivered
+O00322,C0119,S05,2025-01-31,In-store,Cash,Delivered
+O00323,C0057,S05,2026-04-06,In-store,Debit Card,Delivered
+O00324,C0072,S03,2025-05-17,In-store,UPI,Delivered
+O00325,C0022,S03,2025-05-29,In-store,UPI,Delivered
+O00326,C0045,S08,2026-02-01,Online,Debit Card,Delivered
+O00327,C0099,S04,2026-04-30,In-store,Cash,Delivered
+O00328,C0132,S04,2025-12-13,Online,Credit Card,Cancelled
+O00329,C0108,S06,2025-02-27,Online,UPI,Delivered
+O00330,C0084,S03,2025-08-22,Online,Debit Card,Delivered
+O00331,C0014,S03,2025-06-25,Online,EMI,Delivered
+O00332,C0087,S04,2025-02-26,In-store,Credit Card,Delivered
+O00333,C0064,S05,2025-03-07,In-store,UPI,Delivered
+O00334,C0080,S03,2026-05-04,Online,Debit Card,Delivered
+O00335,C0018,S04,2026-05-11,In-store,Credit Card,Delivered
+O00336,C0009,S05,2026-04-18,Online,UPI,Cancelled
+O00337,C0092,S04,2025-04-14,In-store,Credit Card,Delivered
+O00338,C0126,S07,2026-05-28,In-store,EMI,Delivered
+O00339,C0029,S04,2026-01-06,In-store,EMI,Delivered
+O00340,C0113,S03,2025-02-01,In-store,EMI,Delivered
+O00341,C0002,S06,2025-12-15,Online,EMI,Delivered
+O00342,C0052,S04,2025-04-23,Online,Debit Card,Delivered
+O00343,C0023,S05,2025-03-13,Online,Credit Card,Delivered
+O00344,C0063,S06,2025-07-23,In-store,EMI,Delivered
+O00345,C0081,S04,2025-05-08,In-store,Cash,Delivered
+O00346,C0051,S05,2026-04-29,Online,Credit Card,Delivered
+O00347,C0101,S03,2025-06-05,In-store,UPI,Delivered
+O00348,C0002,S06,2025-05-29,Online,Debit Card,Delivered
+O00349,C0035,S03,2025-01-28,Online,UPI,Delivered
+O00350,C0084,S03,2026-05-04,In-store,UPI,Delivered
+O00351,C0071,S03,2025-12-07,In-store,UPI,Delivered
+O00352,C0057,S05,2025-02-28,In-store,Credit Card,Delivered
+O00353,C0078,S06,2025-02-09,In-store,UPI,Delivered
+O00354,C0051,S06,2026-01-05,In-store,Cash,Delivered
+O00355,C0045,S08,2025-06-19,In-store,UPI,Delivered
+O00356,C0006,S06,2025-12-12,Online,UPI,Delivered
+O00357,C0041,S01,2025-01-05,In-store,Debit Card,Delivered
+O00358,C0097,S01,2025-07-15,In-store,EMI,Delivered
+O00359,C0041,S02,2026-05-16,Online,UPI,Cancelled
+O00360,C0130,S03,2026-03-14,Online,UPI,Delivered
+O00361,C0095,S08,2025-04-10,In-store,Credit Card,Delivered
+O00362,C0135,S07,2026-03-13,Online,UPI,Delivered
+O00363,C0014,S04,2025-05-15,In-store,Debit Card,Delivered
+O00364,C0009,S05,2025-08-09,In-store,Debit Card,Delivered
+O00365,C0058,S05,2026-05-01,Online,UPI,Delivered
+O00366,C0016,S04,2026-01-28,In-store,Debit Card,Delivered
+O00367,C0069,S06,2026-01-12,In-store,Credit Card,Delivered
+O00368,C0036,S07,2026-05-26,Online,EMI,Delivered
+O00369,C0073,S06,2026-04-12,Online,UPI,Cancelled
+O00370,C0049,S08,2025-11-04,In-store,Cash,Delivered
+O00371,C0061,S04,2025-04-24,Online,EMI,Delivered
+O00372,C0072,S06,2025-11-17,Online,Debit Card,Delivered
+O00373,C0046,S05,2025-08-18,In-store,EMI,Delivered
+O00374,C0007,S06,2025-03-10,Online,UPI,Delivered
+O00375,C0137,S06,2026-01-30,In-store,Debit Card,Delivered
+O00376,C0029,S04,2025-05-08,In-store,EMI,Delivered
+O00377,C0061,S05,2025-01-06,In-store,UPI,Delivered
+O00378,C0057,S05,2025-02-20,In-store,EMI,Delivered
+O00379,C0023,S05,2025-12-13,Online,UPI,Delivered
+O00380,C0012,S07,2026-05-25,In-store,UPI,Delivered
+O00381,C0049,S08,2026-06-07,In-store,Cash,Delivered
+O00382,C0026,S04,2025-07-23,In-store,Debit Card,Delivered
+O00383,C0111,S01,2025-03-12,In-store,Debit Card,Delivered
+O00384,C0127,S08,2026-04-04,In-store,Credit Card,Delivered
+O00385,C0012,S07,2025-03-18,In-store,Credit Card,Delivered
+O00386,C0113,S03,2025-07-03,In-store,Credit Card,Delivered
+O00387,C0024,S05,2025-08-15,In-store,UPI,Delivered
+O00388,C0087,S04,2025-05-10,In-store,EMI,Delivered
+O00389,C0048,S04,2025-02-14,In-store,Debit Card,Delivered
+O00390,C0075,S02,2025-10-28,In-store,Cash,Delivered
+O00391,C0060,S03,2026-03-19,Online,UPI,Delivered
+O00392,C0135,S07,2025-11-09,Online,UPI,Delivered
+O00393,C0087,S04,2026-03-07,Online,Credit Card,Delivered
+O00394,C0039,S07,2026-01-19,In-store,Cash,Delivered
+O00395,C0049,S08,2025-07-31,In-store,Debit Card,Delivered
+O00396,C0084,S03,2026-06-13,Online,UPI,Delivered
+O00397,C0030,S04,2025-12-06,Online,Credit Card,Delivered
+O00398,C0078,S06,2025-10-03,In-store,UPI,Delivered
+O00399,C0121,S05,2026-02-01,In-store,Cash,Cancelled
+O00400,C0024,S05,2025-07-08,In-store,Debit Card,Delivered
+O00401,C0131,S08,2026-06-25,In-store,Credit Card,Delivered
+O00402,C0071,S03,2025-10-18,Online,UPI,Delivered
+O00403,C0042,S03,2025-07-22,Online,Debit Card,Delivered
+O00404,C0083,S07,2026-02-16,Online,Credit Card,Delivered
+O00405,C0129,S04,2025-05-20,Online,Debit Card,Delivered
+O00406,C0080,S03,2025-11-05,Online,UPI,Delivered
+O00407,C0115,S05,2025-06-18,Online,UPI,Delivered
+O00408,C0018,S01,2025-07-01,Online,UPI,Delivered
+O00409,C0137,S06,2025-09-02,Online,EMI,Delivered
+O00410,C0041,S05,2025-10-27,Online,Credit Card,Cancelled
+O00411,C0002,S06,2025-03-02,Online,EMI,Delivered
+O00412,C0051,S05,2025-08-14,In-store,Credit Card,Delivered
+O00413,C0095,S08,2026-04-18,In-store,EMI,Delivered
+O00414,C0104,S07,2025-06-10,In-store,Cash,Cancelled
+O00415,C0025,S08,2025-09-28,In-store,Debit Card,Delivered
+O00416,C0078,S06,2025-09-18,Online,Credit Card,Delivered
+O00417,C0040,S06,2026-02-26,In-store,Credit Card,Delivered
+O00418,C0049,S08,2025-06-15,In-store,EMI,Delivered
+O00419,C0138,S08,2026-03-22,In-store,EMI,Delivered
+O00420,C0017,S06,2025-06-11,Online,UPI,Delivered
+O00421,C0126,S07,2025-07-06,In-store,Credit Card,Delivered
+O00422,C0006,S06,2025-08-19,In-store,Cash,Delivered
+O00423,C0132,S04,2026-03-28,Online,Debit Card,Delivered
+O00424,C0056,S02,2026-04-18,Online,UPI,Delivered
+O00425,C0050,S07,2026-04-27,Online,Credit Card,Delivered
+O00426,C0134,S04,2025-08-26,In-store,Debit Card,Delivered
+O00427,C0018,S04,2025-11-03,In-store,Credit Card,Delivered
+O00428,C0112,S04,2025-08-22,In-store,Cash,Delivered
+O00429,C0052,S04,2025-06-07,In-store,Debit Card,Delivered
+O00430,C0061,S05,2025-05-06,Online,EMI,Delivered
+O00431,C0097,S08,2026-01-08,In-store,UPI,Delivered
+O00432,C0133,S03,2025-03-14,In-store,Cash,Delivered
+O00433,C0025,S08,2026-02-23,In-store,UPI,Delivered
+O00434,C0072,S06,2026-05-24,In-store,Debit Card,Delivered
+O00435,C0133,S03,2026-05-23,In-store,EMI,Delivered
+O00436,C0132,S04,2025-10-08,Online,UPI,Cancelled
+O00437,C0053,S03,2025-05-19,Online,UPI,Delivered
+O00438,C0077,S06,2025-04-17,In-store,UPI,Delivered
+O00439,C0049,S06,2026-02-04,Online,EMI,Delivered
+O00440,C0118,S04,2026-05-02,In-store,EMI,Delivered
+O00441,C0123,S08,2025-12-11,Online,EMI,Delivered
+O00442,C0112,S04,2025-08-14,In-store,UPI,Delivered
+O00443,C0055,S02,2025-03-01,In-store,EMI,Delivered
+O00444,C0089,S05,2026-02-13,In-store,EMI,Delivered
+O00445,C0129,S04,2026-01-16,In-store,Debit Card,Delivered
+O00446,C0033,S05,2025-08-03,In-store,Credit Card,Cancelled
+O00447,C0018,S07,2026-04-09,In-store,EMI,Cancelled
+O00448,C0106,S06,2025-09-01,In-store,Cash,Delivered
+O00449,C0126,S07,2026-05-20,Online,EMI,Delivered
+O00450,C0111,S02,2026-06-01,Online,Debit Card,Delivered
+O00451,C0097,S08,2025-04-16,In-store,Debit Card,Delivered
+O00452,C0008,S03,2026-03-17,In-store,EMI,Delivered
+O00453,C0004,S01,2025-06-01,In-store,Credit Card,Delivered
+O00454,C0084,S03,2025-05-26,Online,Credit Card,Delivered
+O00455,C0095,S08,2025-01-20,In-store,UPI,Delivered
+O00456,C0078,S06,2025-02-11,Online,EMI,Delivered
+O00457,C0040,S05,2025-11-11,In-store,UPI,Delivered
+O00458,C0084,S03,2025-05-13,Online,Credit Card,Delivered
+O00459,C0047,S04,2025-05-19,Online,Credit Card,Delivered
+O00460,C0002,S06,2025-11-10,In-store,EMI,Delivered
+O00461,C0019,S07,2025-01-07,In-store,Credit Card,Delivered
+O00462,C0112,S04,2025-12-22,Online,UPI,Delivered
+O00463,C0084,S08,2026-04-01,In-store,Debit Card,Delivered
+O00464,C0041,S08,2026-06-08,In-store,Cash,Delivered
+O00465,C0120,S08,2025-10-22,Online,EMI,Cancelled
+O00466,C0005,S08,2026-02-28,Online,EMI,Delivered
+O00467,C0120,S07,2026-02-25,Online,UPI,Delivered
+O00468,C0058,S05,2025-03-12,In-store,Cash,Delivered
+O00469,C0139,S03,2026-03-13,In-store,Cash,Delivered
+O00470,C0089,S04,2025-11-02,Online,UPI,Delivered
+O00471,C0054,S05,2025-04-05,In-store,Debit Card,Delivered
+O00472,C0009,S05,2026-02-17,Online,Credit Card,Delivered
+O00473,C0089,S05,2025-05-18,Online,EMI,Delivered
+O00474,C0026,S04,2025-12-09,In-store,UPI,Delivered
+O00475,C0077,S06,2025-08-02,Online,EMI,Delivered
+O00476,C0081,S04,2026-05-25,In-store,Cash,Cancelled
+O00477,C0001,S01,2025-09-23,In-store,Cash,Delivered
+O00478,C0102,S04,2025-12-18,In-store,EMI,Delivered
+O00479,C0038,S08,2025-04-09,In-store,Debit Card,Delivered
+O00480,C0004,S06,2025-08-16,In-store,Cash,Delivered
+O00481,C0055,S08,2026-01-10,In-store,EMI,Delivered
+O00482,C0135,S07,2026-06-14,Online,UPI,Delivered
+O00483,C0026,S01,2025-08-30,Online,Credit Card,Delivered
+O00484,C0096,S07,2025-03-01,In-store,EMI,Cancelled
+O00485,C0071,S03,2025-12-24,In-store,UPI,Delivered
+O00486,C0086,S03,2026-04-27,In-store,Credit Card,Cancelled
+O00487,C0051,S05,2026-05-30,Online,Credit Card,Delivered
+O00488,C0082,S03,2026-01-06,Online,Debit Card,Cancelled
+O00489,C0088,S01,2025-11-05,Online,UPI,Delivered
+O00490,C0017,S06,2025-03-26,In-store,EMI,Delivered
+O00491,C0071,S03,2025-01-30,In-store,Debit Card,Delivered
+O00492,C0015,S08,2026-06-03,Online,UPI,Delivered
+O00493,C0034,S02,2026-05-31,Online,UPI,Delivered
+O00494,C0131,S08,2026-06-09,In-store,UPI,Delivered
+O00495,C0009,S05,2025-04-05,Online,UPI,Delivered
+O00496,C0086,S03,2025-05-02,Online,Debit Card,Delivered
+O00497,C0108,S05,2025-02-24,In-store,UPI,Delivered
+O00498,C0067,S05,2026-01-16,In-store,UPI,Delivered
+O00499,C0010,S03,2025-09-02,Online,Debit Card,Delivered
+O00500,C0121,S07,2026-03-31,In-store,UPI,Delivered
+O00501,C0114,S03,2026-04-30,Online,UPI,Delivered
+O00502,C0032,S05,2025-08-23,In-store,UPI,Delivered
+O00503,C0005,S03,2025-04-24,In-store,EMI,Delivered
+O00504,C0079,S04,2025-06-02,Online,EMI,Delivered
+O00505,C0055,S08,2025-06-19,Online,Debit Card,Delivered
+O00506,C0065,S06,2025-06-30,Online,UPI,Cancelled
+O00507,C0135,S07,2025-07-31,In-store,UPI,Delivered
+O00508,C0064,S05,2025-10-26,Online,EMI,Delivered
+O00509,C0136,S04,2025-03-22,Online,Credit Card,Delivered
+O00510,C0077,S06,2025-04-14,Online,Debit Card,Delivered
+O00511,C0112,S04,2025-12-14,Online,EMI,Delivered
+O00512,C0062,S03,2026-01-12,In-store,EMI,Delivered
+O00513,C0037,S01,2025-01-27,Online,Debit Card,Delivered
+O00514,C0076,S02,2025-11-23,In-store,Cash,Delivered
+O00515,C0104,S07,2026-01-14,Online,EMI,Cancelled
+O00516,C0031,S07,2025-09-19,Online,Debit Card,Delivered
+O00517,C0108,S05,2025-09-24,In-store,UPI,Delivered
+O00518,C0012,S07,2025-12-14,In-store,Debit Card,Delivered
+O00519,C0093,S05,2026-04-06,In-store,UPI,Delivered
+O00520,C0138,S08,2025-04-03,In-store,Cash,Delivered
+O00521,C0039,S07,2025-06-10,Online,UPI,Delivered
+O00522,C0125,S08,2025-02-05,In-store,Credit Card,Delivered
+O00523,C0039,S07,2025-01-10,In-store,Debit Card,Delivered
+O00524,C0103,S04,2025-11-26,In-store,Cash,Delivered
+O00525,C0056,S08,2026-03-18,In-store,Credit Card,Delivered
+O00526,C0077,S06,2025-06-23,In-store,Cash,Delivered
+O00527,C0008,S03,2026-05-16,Online,EMI,Cancelled
+O00528,C0090,S06,2026-02-01,Online,Debit Card,Delivered
+O00529,C0006,S06,2025-03-06,In-store,Credit Card,Cancelled
+O00530,C0137,S06,2025-09-22,Online,UPI,Cancelled
+O00531,C0098,S05,2025-09-20,Online,UPI,Delivered
+O00532,C0061,S05,2026-06-26,Online,UPI,Delivered
+O00533,C0118,S05,2026-04-06,Online,EMI,Delivered
+O00534,C0051,S05,2025-03-28,Online,Credit Card,Delivered
+O00535,C0024,S05,2025-05-16,In-store,UPI,Cancelled
+O00536,C0016,S04,2026-03-18,In-store,Cash,Delivered
+O00537,C0113,S03,2025-04-26,In-store,Credit Card,Delivered
+O00538,C0048,S04,2025-04-14,Online,UPI,Delivered
+O00539,C0106,S06,2026-04-29,Online,EMI,Delivered
+O00540,C0041,S05,2025-12-03,In-store,Credit Card,Delivered
+O00541,C0085,S05,2025-03-08,In-store,Cash,Delivered
+O00542,C0106,S06,2025-11-30,Online,EMI,Cancelled
+O00543,C0129,S04,2025-03-01,In-store,UPI,Delivered
+O00544,C0005,S08,2026-04-08,In-store,Debit Card,Delivered
+O00545,C0019,S07,2026-03-29,Online,UPI,Delivered
+O00546,C0069,S04,2025-01-14,In-store,Cash,Delivered
+O00547,C0133,S03,2026-03-01,Online,EMI,Delivered
+O00548,C0033,S05,2026-05-28,Online,EMI,Delivered
+O00549,C0060,S03,2025-11-13,In-store,EMI,Delivered
+O00550,C0108,S05,2026-02-09,In-store,Cash,Cancelled
+O00551,C0120,S07,2025-03-02,Online,UPI,Delivered
+O00552,C0034,S02,2025-01-21,In-store,Debit Card,Delivered
+O00553,C0084,S03,2025-05-19,In-store,Credit Card,Delivered
+O00554,C0124,S01,2025-05-20,In-store,UPI,Delivered
+O00555,C0077,S06,2025-03-19,Online,Debit Card,Delivered
+O00556,C0067,S05,2026-02-19,Online,Debit Card,Delivered
+O00557,C0072,S06,2025-06-03,Online,UPI,Delivered
+O00558,C0121,S07,2025-12-25,Online,Credit Card,Delivered
+O00559,C0088,S02,2026-01-19,Online,EMI,Delivered
+O00560,C0056,S08,2025-06-18,Online,UPI,Delivered
+O00561,C0069,S05,2025-11-05,Online,UPI,Delivered
+O00562,C0042,S03,2026-06-30,Online,UPI,Delivered
+O00563,C0035,S03,2026-04-15,In-store,Debit Card,Delivered
+O00564,C0053,S03,2026-01-13,In-store,EMI,Delivered
+O00565,C0061,S05,2025-12-09,Online,EMI,Cancelled
+O00566,C0107,S06,2026-05-17,In-store,Credit Card,Delivered
+O00567,C0020,S07,2026-03-01,In-store,UPI,Delivered
+O00568,C0039,S07,2026-05-24,In-store,EMI,Delivered
+O00569,C0131,S01,2025-10-19,Online,Debit Card,Delivered
+O00570,C0118,S04,2025-05-17,In-store,Debit Card,Delivered
+O00571,C0030,S04,2025-05-22,In-store,Cash,Delivered
+O00572,C0048,S01,2025-06-06,In-store,EMI,Delivered
+O00573,C0027,S01,2025-08-22,In-store,Cash,Cancelled
+O00574,C0009,S05,2026-06-13,In-store,EMI,Delivered
+O00575,C0061,S05,2025-09-27,Online,Debit Card,Delivered
+O00576,C0031,S07,2025-08-08,In-store,EMI,Delivered
+O00577,C0029,S01,2025-04-07,Online,Credit Card,Delivered
+O00578,C0074,S06,2025-09-14,Online,Debit Card,Delivered
+O00579,C0015,S08,2026-01-13,Online,EMI,Delivered
+O00580,C0039,S07,2025-01-21,Online,UPI,Delivered
+O00581,C0137,S06,2025-08-17,In-store,Debit Card,Delivered
+O00582,C0064,S05,2025-11-13,In-store,UPI,Delivered
+O00583,C0023,S05,2026-04-17,Online,EMI,Delivered
+O00584,C0108,S05,2026-04-26,In-store,Cash,Delivered
+O00585,C0101,S03,2025-02-01,In-store,EMI,Delivered
+O00586,C0089,S05,2025-05-08,Online,Credit Card,Delivered
+O00587,C0092,S08,2025-01-08,In-store,UPI,Delivered
+O00588,C0056,S08,2025-05-26,Online,Debit Card,Delivered
+O00589,C0139,S03,2025-05-27,In-store,Credit Card,Delivered
+O00590,C0042,S03,2025-06-11,In-store,UPI,Delivered
+O00591,C0028,S02,2025-03-29,In-store,UPI,Cancelled
+O00592,C0121,S07,2025-05-12,Online,EMI,Delivered
+O00593,C0011,S06,2025-09-20,Online,Credit Card,Delivered
+O00594,C0069,S06,2025-10-29,Online,Debit Card,Delivered
+O00595,C0112,S04,2026-06-07,Online,UPI,Delivered
+O00596,C0016,S04,2025-12-16,In-store,Debit Card,Delivered
+O00597,C0129,S04,2025-05-06,Online,Debit Card,Delivered
+O00598,C0080,S06,2026-01-14,In-store,Credit Card,Delivered
+O00599,C0004,S06,2025-07-19,Online,EMI,Delivered
+O00600,C0035,S03,2025-12-29,Online,Debit Card,Delivered
+O00601,C0138,S08,2025-03-02,In-store,EMI,Cancelled
+O00602,C0018,S08,2026-06-30,In-store,EMI,Delivered
+O00603,C0136,S04,2026-06-03,In-store,UPI,Delivered
+O00604,C0084,S01,2026-02-17,Online,EMI,Delivered
+O00605,C0011,S04,2025-12-22,Online,UPI,Delivered
+O00606,C0085,S05,2025-10-26,In-store,EMI,Delivered
+O00607,C0090,S06,2025-07-08,Online,Credit Card,Delivered
+O00608,C0065,S06,2025-03-27,Online,EMI,Delivered
+O00609,C0096,S07,2025-04-30,Online,Debit Card,Delivered
+O00610,C0007,S06,2025-05-13,In-store,EMI,Delivered
+O00611,C0127,S02,2025-10-09,In-store,EMI,Delivered
+O00612,C0015,S04,2025-03-23,In-store,Cash,Delivered
+O00613,C0009,S05,2026-06-08,In-store,Debit Card,Delivered
+O00614,C0108,S05,2026-06-02,Online,UPI,Delivered
+O00615,C0009,S05,2025-05-18,Online,UPI,Delivered
+O00616,C0112,S04,2026-06-19,In-store,UPI,Delivered
+O00617,C0110,S07,2025-10-30,In-store,EMI,Delivered
+O00618,C0004,S06,2026-05-13,Online,UPI,Delivered
+O00619,C0004,S06,2025-09-04,In-store,UPI,Delivered
+O00620,C0106,S02,2025-01-27,Online,EMI,Delivered
+O00621,C0114,S03,2025-04-06,In-store,EMI,Delivered
+O00622,C0120,S03,2025-07-26,In-store,Credit Card,Delivered
+O00623,C0128,S06,2026-02-06,In-store,Cash,Delivered
+O00624,C0140,S03,2025-10-23,Online,UPI,Delivered
+O00625,C0083,S07,2025-06-28,Online,EMI,Delivered
+O00626,C0115,S03,2025-11-13,Online,EMI,Delivered
+O00627,C0017,S06,2026-06-27,In-store,EMI,Delivered
+O00628,C0039,S07,2025-06-22,In-store,Debit Card,Delivered
+O00629,C0015,S08,2025-06-15,In-store,Credit Card,Delivered
+O00630,C0029,S04,2026-05-20,Online,Credit Card,Delivered
+O00631,C0044,S03,2025-08-11,In-store,Debit Card,Delivered
+O00632,C0093,S08,2025-10-21,In-store,Cash,Delivered
+O00633,C0019,S05,2026-06-07,In-store,Cash,Delivered
+O00634,C0069,S06,2025-10-01,Online,EMI,Cancelled
+O00635,C0115,S05,2025-03-16,In-store,Debit Card,Delivered
+O00636,C0066,S06,2025-09-12,In-store,Cash,Delivered
+O00637,C0067,S05,2026-05-23,Online,UPI,Delivered
+O00638,C0112,S04,2025-07-30,In-store,Debit Card,Delivered
+O00639,C0033,S05,2025-09-21,In-store,EMI,Delivered
+O00640,C0028,S01,2025-03-21,Online,Debit Card,Delivered
+O00641,C0113,S03,2025-07-01,In-store,UPI,Delivered
+O00642,C0033,S05,2025-12-19,Online,EMI,Delivered
+O00643,C0080,S02,2026-03-08,Online,Credit Card,Delivered
+O00644,C0102,S04,2025-11-30,In-store,Debit Card,Delivered
+O00645,C0138,S08,2025-11-24,Online,Credit Card,Delivered
+O00646,C0011,S04,2026-05-20,Online,UPI,Delivered
+O00647,C0012,S07,2025-04-07,In-store,Cash,Delivered
+O00648,C0045,S08,2025-03-04,In-store,EMI,Delivered
+O00649,C0054,S04,2026-06-26,In-store,Cash,Delivered
+O00650,C0076,S02,2026-04-20,Online,EMI,Delivered
+O00651,C0107,S03,2026-03-26,In-store,Cash,Delivered
+O00652,C0127,S01,2025-05-15,Online,Credit Card,Delivered
+O00653,C0076,S01,2025-09-28,In-store,UPI,Delivered
+O00654,C0038,S08,2025-03-21,Online,Credit Card,Delivered
+O00655,C0045,S08,2025-02-08,Online,Credit Card,Cancelled
+O00656,C0078,S06,2025-04-11,Online,Debit Card,Delivered
+O00657,C0051,S05,2026-01-21,In-store,Credit Card,Delivered
+O00658,C0122,S08,2026-01-06,Online,EMI,Delivered
+O00659,C0126,S07,2025-02-03,In-store,Debit Card,Delivered
+O00660,C0132,S04,2025-05-09,In-store,Cash,Delivered
+O00661,C0035,S03,2025-05-29,Online,UPI,Delivered
+O00662,C0015,S08,2025-01-14,Online,Debit Card,Delivered
+O00663,C0140,S03,2025-12-17,In-store,Credit Card,Delivered
+O00664,C0098,S05,2026-03-14,Online,UPI,Delivered
+O00665,C0135,S07,2025-11-28,In-store,Credit Card,Delivered
+O00666,C0013,S01,2025-07-04,In-store,Cash,Delivered
+O00667,C0120,S07,2025-09-20,Online,UPI,Delivered
+O00668,C0130,S03,2025-10-14,Online,UPI,Delivered
+O00669,C0045,S08,2025-11-13,In-store,UPI,Delivered
+O00670,C0008,S03,2025-02-05,In-store,Debit Card,Delivered
+O00671,C0046,S07,2025-12-24,Online,UPI,Cancelled
+O00672,C0124,S02,2026-04-05,In-store,Credit Card,Delivered
+O00673,C0139,S06,2025-06-01,Online,UPI,Cancelled
+O00674,C0087,S04,2025-02-07,In-store,UPI,Delivered
+O00675,C0004,S06,2025-04-18,In-store,Debit Card,Delivered
+O00676,C0047,S04,2025-08-23,Online,UPI,Delivered
+O00677,C0027,S01,2026-01-01,In-store,Cash,Delivered
+O00678,C0081,S04,2025-12-11,Online,UPI,Delivered
+O00679,C0056,S08,2025-07-05,In-store,UPI,Delivered
+O00680,C0115,S05,2025-07-31,Online,UPI,Delivered
+O00681,C0002,S06,2025-02-21,Online,UPI,Delivered
+O00682,C0127,S02,2025-12-13,In-store,UPI,Delivered
+O00683,C0039,S07,2025-03-22,Online,UPI,Delivered
+O00684,C0112,S04,2025-09-18,In-store,Debit Card,Delivered
+O00685,C0017,S06,2025-11-25,Online,UPI,Delivered
+O00686,C0039,S07,2026-06-24,In-store,Cash,Delivered
+O00687,C0070,S08,2026-06-20,In-store,UPI,Delivered
+O00688,C0131,S08,2025-12-09,In-store,Cash,Delivered
+O00689,C0083,S07,2025-02-03,Online,UPI,Delivered
+O00690,C0074,S06,2026-02-08,In-store,Debit Card,Cancelled
+O00691,C0069,S06,2026-01-30,Online,Credit Card,Delivered
+O00692,C0038,S08,2025-06-28,In-store,Debit Card,Delivered
+O00693,C0099,S04,2025-12-27,Online,EMI,Delivered
+O00694,C0085,S05,2025-02-25,In-store,Cash,Delivered
+O00695,C0034,S02,2026-01-10,In-store,Debit Card,Delivered
+O00696,C0080,S03,2026-05-11,In-store,Cash,Delivered
+O00697,C0011,S04,2025-03-10,Online,Debit Card,Delivered
+O00698,C0076,S02,2026-01-10,Online,Debit Card,Delivered
+O00699,C0039,S07,2026-04-26,In-store,Cash,Delivered
+O00700,C0088,S01,2026-06-24,In-store,UPI,Delivered
+O00701,C0123,S08,2025-06-14,Online,EMI,Delivered
+O00702,C0028,S01,2026-01-26,Online,EMI,Delivered
+O00703,C0104,S07,2025-02-15,Online,Credit Card,Delivered
+O00704,C0118,S04,2026-03-16,Online,Credit Card,Delivered
+O00705,C0077,S06,2025-07-19,In-store,EMI,Delivered
+O00706,C0100,S07,2026-04-03,Online,UPI,Delivered
+O00707,C0128,S06,2025-08-13,Online,Credit Card,Cancelled
+O00708,C0084,S04,2025-09-26,Online,UPI,Delivered
+O00709,C0109,S05,2025-01-09,In-store,Debit Card,Delivered
+O00710,C0034,S02,2026-05-07,Online,UPI,Delivered
+O00711,C0045,S08,2026-04-09,In-store,Debit Card,Delivered
+O00712,C0027,S02,2025-05-18,Online,UPI,Delivered
+O00713,C0015,S01,2025-03-31,Online,UPI,Delivered
+O00714,C0078,S06,2026-02-20,Online,Debit Card,Delivered
+O00715,C0063,S01,2025-04-29,Online,Credit Card,Delivered
+O00716,C0052,S04,2026-04-17,Online,EMI,Delivered
+O00717,C0128,S06,2025-09-27,In-store,Credit Card,Delivered
+O00718,C0019,S08,2025-05-01,Online,UPI,Delivered
+O00719,C0140,S03,2025-01-17,In-store,UPI,Delivered
+O00720,C0015,S08,2025-03-19,In-store,Credit Card,Delivered
+O00721,C0119,S05,2026-06-03,In-store,Debit Card,Delivered
+O00722,C0119,S05,2025-06-17,In-store,EMI,Delivered
+O00723,C0112,S04,2025-02-03,In-store,UPI,Delivered
+O00724,C0044,S03,2025-11-13,In-store,UPI,Delivered
+O00725,C0037,S01,2026-03-07,Online,Debit Card,Delivered
+O00726,C0028,S02,2026-01-21,Online,UPI,Delivered
+O00727,C0018,S04,2025-11-10,In-store,Cash,Delivered
+O00728,C0084,S03,2025-02-17,In-store,Credit Card,Delivered
+O00729,C0024,S05,2025-11-10,Online,UPI,Delivered
+O00730,C0123,S08,2025-11-02,Online,Credit Card,Delivered
+O00731,C0004,S06,2026-02-13,Online,EMI,Delivered
+O00732,C0074,S06,2026-04-30,Online,UPI,Delivered
+O00733,C0117,S06,2025-05-25,In-store,UPI,Delivered
+O00734,C0063,S08,2025-12-09,In-store,EMI,Delivered
+O00735,C0117,S06,2025-10-26,In-store,UPI,Delivered
+O00736,C0020,S07,2025-09-23,In-store,Debit Card,Cancelled
+O00737,C0125,S01,2025-05-14,In-store,Debit Card,Delivered
+O00738,C0095,S08,2026-03-04,Online,Credit Card,Delivered
+O00739,C0032,S07,2026-06-26,Online,Debit Card,Delivered
+O00740,C0041,S05,2025-02-21,In-store,Debit Card,Delivered
+O00741,C0107,S03,2025-05-15,Online,Credit Card,Delivered
+O00742,C0140,S03,2025-03-29,In-store,EMI,Delivered
+O00743,C0021,S07,2025-07-24,In-store,Debit Card,Delivered
+O00744,C0114,S03,2026-03-30,In-store,UPI,Delivered
+O00745,C0058,S05,2025-01-13,In-store,Credit Card,Delivered
+O00746,C0107,S03,2025-07-05,In-store,Cash,Delivered
+O00747,C0094,S02,2025-05-03,In-store,Debit Card,Delivered
+O00748,C0052,S04,2025-11-23,Online,EMI,Delivered
+O00749,C0062,S03,2025-11-08,In-store,EMI,Delivered
+O00750,C0077,S06,2026-05-20,In-store,Cash,Delivered
+O00751,C0113,S04,2026-05-16,In-store,UPI,Delivered
+O00752,C0001,S01,2025-11-10,In-store,UPI,Delivered
+O00753,C0120,S07,2025-10-24,In-store,UPI,Cancelled
+O00754,C0001,S06,2026-01-09,Online,UPI,Delivered
+O00755,C0097,S08,2025-04-12,In-store,Credit Card,Delivered
+O00756,C0033,S05,2025-04-26,In-store,Debit Card,Delivered
+O00757,C0061,S05,2026-03-30,In-store,EMI,Delivered
+O00758,C0070,S08,2026-01-11,In-store,Debit Card,Delivered
+O00759,C0102,S04,2025-05-17,In-store,Debit Card,Delivered
+O00760,C0032,S07,2025-02-19,In-store,Cash,Delivered
+O00761,C0120,S07,2026-03-10,Online,Debit Card,Delivered
+O00762,C0114,S03,2025-10-27,In-store,Cash,Delivered
+O00763,C0077,S06,2025-09-01,Online,UPI,Delivered
+O00764,C0121,S07,2025-06-21,Online,UPI,Delivered
+O00765,C0048,S04,2025-03-27,Online,Credit Card,Delivered
+O00766,C0047,S04,2025-06-20,Online,UPI,Delivered
+O00767,C0140,S03,2026-01-23,In-store,Cash,Delivered
+O00768,C0038,S08,2025-09-29,In-store,Credit Card,Delivered
+O00769,C0032,S05,2025-03-25,In-store,UPI,Delivered
+O00770,C0097,S05,2025-02-15,In-store,EMI,Delivered
+O00771,C0074,S04,2025-09-14,In-store,Debit Card,Delivered
+O00772,C0096,S07,2025-10-28,In-store,EMI,Delivered
+O00773,C0139,S07,2026-02-16,In-store,Debit Card,Delivered
+O00774,C0059,S05,2025-06-08,Online,Credit Card,Delivered
+O00775,C0086,S03,2025-05-17,Online,EMI,Delivered
+O00776,C0119,S05,2026-06-22,Online,UPI,Delivered
+O00777,C0082,S03,2025-07-12,In-store,Debit Card,Delivered
+O00778,C0092,S04,2026-05-21,Online,EMI,Delivered
+O00779,C0066,S06,2025-10-16,In-store,UPI,Delivered
+O00780,C0047,S04,2026-06-03,In-store,Debit Card,Delivered
+O00781,C0077,S06,2025-08-31,Online,EMI,Delivered
+O00782,C0083,S07,2026-03-21,In-store,Cash,Delivered
+O00783,C0005,S08,2026-03-18,Online,Debit Card,Delivered
+O00784,C0094,S07,2025-10-30,Online,EMI,Delivered
+O00785,C0060,S03,2025-07-17,In-store,Credit Card,Delivered
+O00786,C0044,S03,2025-07-08,Online,UPI,Delivered
+O00787,C0011,S04,2026-01-12,Online,UPI,Delivered
+O00788,C0041,S05,2026-04-24,Online,UPI,Delivered
+O00789,C0073,S06,2025-10-12,Online,UPI,Delivered
+O00790,C0067,S05,2025-09-16,In-store,Cash,Delivered
+O00791,C0102,S04,2025-10-05,In-store,UPI,Delivered
+O00792,C0011,S04,2025-11-09,Online,UPI,Delivered
+O00793,C0101,S03,2025-09-26,Online,EMI,Delivered
+O00794,C0139,S03,2026-03-01,Online,UPI,Delivered
+O00795,C0134,S04,2025-08-18,Online,Credit Card,Delivered
+O00796,C0090,S06,2026-02-10,Online,Debit Card,Delivered
+O00797,C0077,S06,2025-02-01,In-store,Debit Card,Delivered
+O00798,C0001,S01,2025-04-26,In-store,Credit Card,Delivered
+O00799,C0024,S05,2025-01-07,In-store,EMI,Delivered
+O00800,C0055,S08,2026-02-05,In-store,Cash,Delivered
+O00801,C0067,S05,2025-06-29,Online,Debit Card,Delivered
+O00802,C0072,S06,2026-03-27,In-store,Debit Card,Delivered
+O00803,C0103,S06,2025-11-19,Online,EMI,Delivered
+O00804,C0007,S06,2025-07-16,In-store,Credit Card,Delivered
+O00805,C0121,S07,2026-01-12,In-store,Credit Card,Delivered
+O00806,C0002,S06,2026-02-02,Online,EMI,Cancelled
+O00807,C0107,S03,2025-12-13,Online,UPI,Delivered
+O00808,C0026,S04,2025-03-15,Online,Debit Card,Delivered
+O00809,C0103,S04,2025-01-12,In-store,UPI,Delivered
+O00810,C0023,S05,2025-04-28,In-store,EMI,Delivered
+O00811,C0115,S05,2025-05-02,Online,UPI,Delivered
+O00812,C0124,S02,2025-11-23,Online,UPI,Delivered
+O00813,C0019,S07,2025-06-19,In-store,EMI,Delivered
+O00814,C0125,S02,2026-03-21,In-store,Cash,Delivered
+O00815,C0124,S01,2026-05-20,Online,Debit Card,Delivered
+O00816,C0045,S08,2026-03-19,In-store,UPI,Cancelled
+O00817,C0129,S04,2026-02-26,In-store,Credit Card,Delivered
+O00818,C0087,S04,2025-05-16,In-store,Debit Card,Delivered
+O00819,C0068,S05,2026-02-04,In-store,EMI,Delivered
+O00820,C0088,S02,2025-01-26,In-store,Debit Card,Delivered
+O00821,C0015,S08,2025-07-03,In-store,EMI,Delivered
+O00822,C0037,S01,2025-01-11,Online,Debit Card,Delivered
+O00823,C0112,S04,2026-06-07,Online,UPI,Delivered
+O00824,C0050,S06,2025-03-12,In-store,EMI,Delivered
+O00825,C0080,S03,2025-09-05,In-store,Credit Card,Delivered
+O00826,C0124,S02,2025-01-12,In-store,Debit Card,Delivered
+O00827,C0112,S04,2026-06-14,Online,Credit Card,Cancelled
+O00828,C0026,S04,2025-04-02,Online,UPI,Delivered
+O00829,C0030,S08,2025-11-03,Online,UPI,Delivered
+O00830,C0133,S03,2025-03-31,Online,UPI,Delivered
+O00831,C0085,S05,2026-03-15,In-store,UPI,Delivered
+O00832,C0132,S02,2026-04-25,In-store,Debit Card,Delivered
+O00833,C0119,S07,2025-08-08,Online,EMI,Delivered
+O00834,C0099,S04,2026-04-09,In-store,Cash,Delivered
+O00835,C0119,S05,2026-04-29,In-store,UPI,Delivered
+O00836,C0115,S05,2025-08-05,Online,EMI,Cancelled
+O00837,C0112,S04,2026-02-19,Online,UPI,Delivered
+O00838,C0123,S04,2026-03-08,Online,UPI,Delivered
+O00839,C0034,S02,2026-06-29,In-store,Debit Card,Delivered
+O00840,C0045,S08,2026-02-07,Online,UPI,Delivered
+O00841,C0058,S05,2025-05-22,Online,EMI,Delivered
+O00842,C0078,S06,2025-10-29,In-store,EMI,Cancelled
+O00843,C0037,S06,2025-03-03,Online,Debit Card,Delivered
+O00844,C0113,S03,2025-03-15,Online,Credit Card,Delivered
+O00845,C0060,S03,2025-10-10,In-store,Cash,Delivered
+O00846,C0036,S02,2025-02-13,In-store,UPI,Delivered
+O00847,C0075,S01,2025-10-20,Online,EMI,Delivered
+O00848,C0068,S05,2025-08-24,Online,UPI,Delivered
+O00849,C0015,S08,2026-06-13,Online,Debit Card,Delivered
+O00850,C0026,S04,2025-03-30,Online,UPI,Delivered
+O00851,C0033,S05,2025-06-28,In-store,UPI,Delivered
+O00852,C0032,S05,2025-10-08,Online,UPI,Delivered
+O00853,C0069,S06,2025-06-16,Online,Debit Card,Delivered
+O00854,C0036,S02,2026-01-07,In-store,Debit Card,Delivered
+O00855,C0107,S04,2025-08-29,In-store,Credit Card,Delivered
+O00856,C0065,S01,2025-10-29,In-store,UPI,Delivered
+O00857,C0048,S02,2025-01-12,In-store,UPI,Delivered
+O00858,C0122,S08,2025-05-17,In-store,Debit Card,Delivered
+O00859,C0061,S05,2026-05-17,Online,UPI,Delivered
+O00860,C0112,S04,2025-06-15,Online,Debit Card,Delivered
+O00861,C0018,S04,2025-12-05,Online,EMI,Delivered
+O00862,C0086,S03,2025-12-30,Online,EMI,Delivered
+O00863,C0022,S03,2025-05-26,Online,Credit Card,Delivered
+O00864,C0086,S03,2025-04-19,Online,UPI,Delivered
+O00865,C0084,S03,2025-04-04,In-store,EMI,Cancelled
+O00866,C0049,S08,2025-04-25,Online,Credit Card,Delivered
+O00867,C0103,S04,2025-05-09,Online,UPI,Delivered
+O00868,C0099,S04,2025-02-12,In-store,Debit Card,Delivered
+O00869,C0031,S07,2026-02-26,In-store,Credit Card,Delivered
+O00870,C0057,S04,2025-10-09,In-store,EMI,Delivered
+O00871,C0047,S04,2025-07-29,Online,UPI,Delivered
+O00872,C0140,S03,2025-05-27,In-store,UPI,Delivered
+O00873,C0062,S03,2025-07-06,In-store,Debit Card,Delivered
+O00874,C0060,S01,2025-09-21,Online,Credit Card,Cancelled
+O00875,C0052,S04,2025-01-29,Online,Credit Card,Delivered
+O00876,C0069,S06,2025-06-17,Online,UPI,Delivered
+O00877,C0065,S06,2025-03-30,In-store,Debit Card,Delivered
+O00878,C0026,S03,2025-02-02,In-store,Debit Card,Delivered
+O00879,C0127,S01,2025-01-15,Online,EMI,Delivered
+O00880,C0041,S05,2025-07-16,Online,Debit Card,Delivered
+O00881,C0109,S05,2025-04-18,Online,Credit Card,Delivered
+O00882,C0002,S06,2025-12-27,Online,Credit Card,Delivered
+O00883,C0103,S04,2025-02-19,Online,UPI,Delivered
+O00884,C0022,S03,2025-04-24,Online,Debit Card,Delivered
+O00885,C0002,S06,2026-05-24,In-store,UPI,Delivered
+O00886,C0039,S07,2025-11-14,In-store,Credit Card,Delivered
+O00887,C0116,S03,2025-09-28,Online,Credit Card,Delivered
+O00888,C0130,S03,2025-09-18,In-store,EMI,Delivered
+O00889,C0025,S08,2026-02-05,Online,EMI,Delivered
+O00890,C0135,S07,2026-03-12,Online,Debit Card,Cancelled
+O00891,C0078,S06,2025-05-06,In-store,UPI,Delivered
+O00892,C0044,S03,2026-04-06,In-store,Debit Card,Delivered
+O00893,C0006,S06,2025-10-06,In-store,Debit Card,Delivered
+O00894,C0093,S08,2025-10-29,In-store,Debit Card,Delivered
+O00895,C0058,S05,2026-04-25,In-store,Cash,Delivered
+O00896,C0032,S05,2026-06-30,Online,UPI,Delivered
+O00897,C0001,S01,2025-10-06,In-store,Cash,Delivered
+O00898,C0102,S04,2025-09-21,In-store,Cash,Cancelled
+O00899,C0022,S03,2026-03-22,In-store,Credit Card,Delivered
+O00900,C0118,S04,2025-02-06,Online,UPI,Delivered

@@ -1,0 +1,9 @@
+store_id,store_name,city,region,opened_date,store_manager
+S01,VoltKart Indiranagar,Bengaluru,South,2019-06-14,Ritu Menon
+S02,VoltKart Koramangala,Bengaluru,South,2020-02-01,Arjun Shetty
+S03,VoltKart Andheri,Mumbai,West,2018-11-20,Neha Kulkarni
+S04,VoltKart Connaught Place,Delhi,North,2017-08-05,Vikram Sethi
+S05,VoltKart Salt Lake,Kolkata,East,2021-03-12,Sourav Das
+S06,VoltKart Hitech City,Hyderabad,South,2020-09-09,Lakshmi Reddy
+S07,VoltKart Baner,Pune,West,2022-01-17,Omkar Joshi
+S08,VoltKart Anna Nagar,Chennai,South,2019-12-02,Karthik Iyer
